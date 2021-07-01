@@ -1,0 +1,51 @@
+--proj
+    "/home/thomas/Documents/Quantum_walks/Walks"
+--build-exe
+--input
+    "/home/thomas/Documents/Quantum_walks/Program.qs"
+--output
+    "/home/thomas/Documents/Quantum_walks/obj/qsharp/"
+--references
+    "/home/thomas/.nuget/packages/azure.core/1.14.0/lib/netcoreapp2.1/Azure.Core.dll"
+    "/home/thomas/.nuget/packages/azure.identity/1.4.0/lib/netstandard2.0/Azure.Identity.dll"
+    "/home/thomas/.nuget/packages/azure.quantum.jobs/1.0.0-beta.2/lib/netstandard2.0/Azure.Quantum.Jobs.dll"
+    "/home/thomas/.nuget/packages/azure.storage.blobs/12.2.0/lib/netstandard2.0/Azure.Storage.Blobs.dll"
+    "/home/thomas/.nuget/packages/azure.storage.common/12.1.1/lib/netstandard2.0/Azure.Storage.Common.dll"
+    "/home/thomas/.nuget/packages/microsoft.azure.quantum.client/0.18.2106148911/lib/netstandard2.1/Microsoft.Azure.Quantum.Client.dll"
+    "/home/thomas/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.0/ref/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll"
+    "/home/thomas/.nuget/packages/microsoft.identity.client/4.30.1/lib/netcoreapp2.1/Microsoft.Identity.Client.dll"
+    "/home/thomas/.nuget/packages/microsoft.identity.client.extensions.msal/2.18.4/lib/netcoreapp2.1/Microsoft.Identity.Client.Extensions.Msal.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.BondSchemas.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.entrypointdriver/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.EntryPointDriver.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsCompilationManager.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsCompiler.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsCore.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsDataStructures.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsDocumentationParser.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.qsharp.core/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QSharp.Core.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.qsharp.foundation/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QSharp.Foundation.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsOptimizations.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsSyntaxProcessor.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsTextProcessor.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.compiler/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.QsTransformations.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.runtime.core/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Runtime.Core.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.simulators/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Simulation.Common.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.simulators/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Simulation.QCTraceSimulatorRuntime.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.simulators/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Simulators.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.standard/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Standard.dll"
+    "/home/thomas/.nuget/packages/microsoft.quantum.targets.interfaces/0.18.2106148911/lib/netstandard2.1/Microsoft.Quantum.Targets.Interfaces.dll"
+    "/home/thomas/.nuget/packages/windowsazure.storage/9.3.3/lib/netstandard1.3/Microsoft.WindowsAzure.Storage.dll"
+    "/home/thomas/.nuget/packages/numsharp/0.20.5/lib/netstandard2.0/NumSharp.Core.dll"
+--load
+    "/home/thomas/.nuget/packages/microsoft.quantum.csharpgeneration/0.18.2106148911/build//../lib/netstandard2.1/Microsoft.Quantum.CSharpGeneration.dll"
+--runtime
+    FullComputation
+--skip-monomorphization
+--package-load-fallback-folders
+    "/home/thomas/Documents/Quantum_walks/bin/Debug/netcoreapp3.1/"
+--assembly-properties
+    AssemblyName:Walks
+    ProcessorArchitecture:Unspecified
+    QSharpOutputType:QSharpExe
+    ExecutionTarget:Any
+    DocsPackageId:Walks

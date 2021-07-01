@@ -13,21 +13,109 @@ using Microsoft.Quantum.Core;
 using Microsoft.Quantum.Intrinsic;
 using Microsoft.Quantum.Simulation.Core;
 
-[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"SayHello\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Core\",\"Name\":\"EntryPoint\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":2},\"Item2\":{\"Line\":1,\"Column\":12}}]}}]},\"TypeIdRange\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":2},\"Item2\":{\"Line\":1,\"Column\":12}}]},\"Argument\":{\"Item1\":{\"Case\":\"UnitValue\"},\"Item2\":[],\"Item3\":{\"Case\":\"UnitType\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":12},\"Item2\":{\"Line\":1,\"Column\":14}}]}},\"Offset\":{\"Item1\":6,\"Item2\":4},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":7,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":19}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"UnitType\"},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
-[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"SayHello\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":7,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":19}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"IdentityOracle\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":23,\"Item2\":8},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":25}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":26},\"Item2\":{\"Line\":1,\"Column\":34}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"target\"]},\"Type\":{\"Case\":\"Qubit\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":46},\"Item2\":{\"Line\":1,\"Column\":52}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"IdentityOracle\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":23,\"Item2\":8},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":25}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"IdentityOracle\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":23,\"Item2\":8},\"HeaderRange\":{\"Item1\":{\"Line\":2,\"Column\":12},\"Item2\":{\"Line\":2,\"Column\":15}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.IdentityOracle\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"ConversionTherapy\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":37,\"Item2\":8},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":28}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"register\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":29},\"Item2\":{\"Line\":1,\"Column\":37}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"oracle\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":49},\"Item2\":{\"Line\":1,\"Column\":55}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"ConversionTherapy\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":37,\"Item2\":8},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":28}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"ConversionTherapy\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":37,\"Item2\":8},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":102},\"Item2\":{\"Line\":1,\"Column\":105}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.ConversionTherapy\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Function\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"PhaseOracle\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":49,\"Item2\":8},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":10},\"Item2\":{\"Line\":1,\"Column\":21}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"markingOracle\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":22},\"Item2\":{\"Line\":1,\"Column\":35}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"ReturnType\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"PhaseOracle\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":49,\"Item2\":8},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":10},\"Item2\":{\"Line\":1,\"Column\":21}},\"Documentation\":[]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"FlipFlop\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":82,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":19}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"x\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":20},\"Item2\":{\"Line\":1,\"Column\":21}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"y\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":33},\"Item2\":{\"Line\":1,\"Column\":34}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"FlipFlop\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":82,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":19}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"FlipFlop\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":82,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":56},\"Item2\":{\"Line\":1,\"Column\":59}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.FlipFlop\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumStep\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":94,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":22}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"uTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":23},\"Item2\":{\"Line\":1,\"Column\":28}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"vTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":40},\"Item2\":{\"Line\":1,\"Column\":45}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"shift\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":57},\"Item2\":{\"Line\":1,\"Column\":62}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"coin\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":102},\"Item2\":{\"Line\":1,\"Column\":106}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumStep\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":94,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":22}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumStep\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":94,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":156},\"Item2\":{\"Line\":1,\"Column\":159}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.QuantumStep\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumWalk\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":102,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":22}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"uTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":23},\"Item2\":{\"Line\":1,\"Column\":28}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"vTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":40},\"Item2\":{\"Line\":1,\"Column\":45}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"shift\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":57},\"Item2\":{\"Line\":1,\"Column\":62}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"coin\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":102},\"Item2\":{\"Line\":1,\"Column\":106}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"oracle\"]},\"Type\":{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":145},\"Item2\":{\"Line\":1,\"Column\":151}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"k\"]},\"Type\":{\"Case\":\"Int\"},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":189},\"Item2\":{\"Line\":1,\"Column\":190}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},{\"Case\":\"Operation\",\"Fields\":[{\"Item1\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"Qubit\"}]]},\"Item2\":{\"Case\":\"UnitType\"}},{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}]},{\"Case\":\"Int\"}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumWalk\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":102,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":22}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"QuantumWalk\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":102,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":208},\"Item2\":{\"Line\":1,\"Column\":211}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.QuantumWalk\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"K4Coin\"},\"Attributes\":[],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":141,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":17}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"uTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":18},\"Item2\":{\"Line\":1,\"Column\":23}}}]},{\"Case\":\"QsTupleItem\",\"Fields\":[{\"VariableName\":{\"Case\":\"ValidName\",\"Fields\":[\"vTens\"]},\"Type\":{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},\"InferredInformation\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Position\":{\"Case\":\"Null\"},\"Range\":{\"Item1\":{\"Line\":1,\"Column\":35},\"Item2\":{\"Line\":1,\"Column\":40}}}]}]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"TupleType\",\"Fields\":[[{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]},{\"Case\":\"ArrayType\",\"Fields\":[{\"Case\":\"Qubit\"}]}]]},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"K4Coin\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":141,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":17}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsAdjoint\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"SimpleSet\",\"Fields\":[{\"Case\":\"Adjointable\"}]},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"K4Coin\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":141,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":62},\"Item2\":{\"Line\":1,\"Column\":65}},\"Documentation\":[\"automatically generated QsAdjoint specialization for Walks.K4Coin\"]}")]
+[assembly: CallableDeclaration("{\"Kind\":{\"Case\":\"Operation\"},\"QualifiedName\":{\"Namespace\":\"Walks\",\"Name\":\"TestingStates\"},\"Attributes\":[{\"TypeId\":{\"Case\":\"Value\",\"Fields\":[{\"Namespace\":\"Microsoft.Quantum.Core\",\"Name\":\"EntryPoint\",\"Range\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":2},\"Item2\":{\"Line\":1,\"Column\":12}}]}}]},\"TypeIdRange\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":2},\"Item2\":{\"Line\":1,\"Column\":12}}]},\"Argument\":{\"Item1\":{\"Case\":\"UnitValue\"},\"Item2\":[],\"Item3\":{\"Case\":\"UnitType\"},\"Item4\":{\"IsMutable\":false,\"HasLocalQuantumDependency\":false},\"Item5\":{\"Case\":\"Value\",\"Fields\":[{\"Item1\":{\"Line\":1,\"Column\":12},\"Item2\":{\"Line\":1,\"Column\":14}}]}},\"Offset\":{\"Item1\":151,\"Item2\":4},\"Comments\":{\"OpeningComments\":[],\"ClosingComments\":[]}}],\"Modifiers\":{\"Access\":{\"Case\":\"DefaultAccess\"}},\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":152,\"Item2\":4},\"SymbolRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":24}},\"ArgumentTuple\":{\"Case\":\"QsTuple\",\"Fields\":[[]]},\"Signature\":{\"TypeParameters\":[],\"ArgumentType\":{\"Case\":\"UnitType\"},\"ReturnType\":{\"Case\":\"UnitType\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}}},\"Documentation\":[]}")]
+[assembly: SpecializationDeclaration("{\"Kind\":{\"Case\":\"QsBody\"},\"TypeArguments\":{\"Case\":\"Null\"},\"Information\":{\"Characteristics\":{\"Case\":\"EmptySet\"},\"InferredInformation\":{\"IsSelfAdjoint\":false,\"IsIntrinsic\":false}},\"Parent\":{\"Namespace\":\"Walks\",\"Name\":\"TestingStates\"},\"Attributes\":[],\"SourceFile\":\"/home/thomas/Documents/Quantum_walks/Program.qs\",\"Position\":{\"Item1\":152,\"Item2\":4},\"HeaderRange\":{\"Item1\":{\"Line\":1,\"Column\":11},\"Item2\":{\"Line\":1,\"Column\":24}},\"Documentation\":[]}")]
 #line hidden
 namespace Walks
 {
-    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 8, -1)]
-    public partial class SayHello : Operation<QVoid, QVoid>, ICallable
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 24, 38)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 24, 38)]
+    public partial class IdentityOracle : Adjointable<(IQArray<Qubit>,Qubit)>, ICallable
     {
-        public SayHello(IOperationFactory m) : base(m)
+        public IdentityOracle(IOperationFactory m) : base(m)
         {
         }
 
-        String ICallable.Name => "SayHello";
-        String ICallable.FullName => "Walks.SayHello";
-        public static EntryPointInfo<QVoid, QVoid> Info => new EntryPointInfo<QVoid, QVoid>(typeof(SayHello));
+        public class In : QTuple<(IQArray<Qubit>,Qubit)>, IApplyData
+        {
+            public In((IQArray<Qubit>,Qubit) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "IdentityOracle";
+        String ICallable.FullName => "Walks.IdentityOracle";
+        public override Func<(IQArray<Qubit>,Qubit), QVoid> __Body__ => (__in__) =>
+        {
+            var (register,target) = __in__;
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,Qubit), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (register,target) = __in__;
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,Qubit) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> register, Qubit target)
+        {
+            return __m__.Run<IdentityOracle, (IQArray<Qubit>,Qubit), QVoid>((register, target));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 38, 50)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 38, 50)]
+    public partial class ConversionTherapy : Adjointable<(IQArray<Qubit>,IAdjointable)>, ICallable
+    {
+        public ConversionTherapy(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<Qubit>,IAdjointable)>, IApplyData
+        {
+            public In((IQArray<Qubit>,IAdjointable) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "ConversionTherapy";
+        String ICallable.FullName => "Walks.ConversionTherapy";
         protected Allocate Allocate__
         {
             get;
@@ -40,19 +128,616 @@ namespace Walks
             set;
         }
 
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__X
+        {
+            get;
+            set;
+        }
+
         protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
         {
             get;
             set;
         }
 
-        protected ICallable<Qubit, Result> Microsoft__Quantum__Measurement__MResetZ
+        public override Func<(IQArray<Qubit>,IAdjointable), QVoid> __Body__ => (__in__) =>
+        {
+            var (register,oracle) = __in__;
+#line hidden
+            {
+#line 39 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                var target = Allocate__.Apply();
+#line hidden
+                bool __arg1__ = true;
+                try
+                {
+#line 41 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__X.Apply(target);
+#line 42 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__H.Apply(target);
+#line 45 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    oracle.Apply((register, target));
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__H.Adjoint.Apply(target);
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__X.Adjoint.Apply(target);
+                }
+#line hidden
+                catch
+                {
+                    __arg1__ = false;
+                    throw;
+                }
+#line hidden
+                finally
+                {
+                    if (__arg1__)
+                    {
+#line hidden
+                        Release__.Apply(target);
+                    }
+                }
+            }
+
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,IAdjointable), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (register,oracle) = __in__;
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            {
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                var __qsVar0__target__ = Allocate__.Apply();
+#line hidden
+                bool __arg1__ = true;
+                try
+                {
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__X.Apply(__qsVar0__target__);
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__H.Apply(__qsVar0__target__);
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    oracle.Adjoint.Apply((register, __qsVar0__target__));
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__H.Adjoint.Apply(__qsVar0__target__);
+#line 38 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                    Microsoft__Quantum__Intrinsic__X.Adjoint.Apply(__qsVar0__target__);
+                }
+#line hidden
+                catch
+                {
+                    __arg1__ = false;
+                    throw;
+                }
+#line hidden
+                finally
+                {
+                    if (__arg1__)
+                    {
+#line hidden
+                        Release__.Apply(__qsVar0__target__);
+                    }
+                }
+            }
+
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Allocate__ = this.__Factory__.Get<Allocate>(typeof(global::Microsoft.Quantum.Intrinsic.Allocate));
+            this.Release__ = this.__Factory__.Get<Release>(typeof(global::Microsoft.Quantum.Intrinsic.Release));
+            this.Microsoft__Quantum__Intrinsic__X = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.X));
+            this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,IAdjointable) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> register, IAdjointable oracle)
+        {
+            return __m__.Run<ConversionTherapy, (IQArray<Qubit>,IAdjointable), QVoid>((register, oracle));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 50, 83)]
+    public partial class PhaseOracle : Function<IAdjointable, IAdjointable>, ICallable
+    {
+        public PhaseOracle(IOperationFactory m) : base(m)
+        {
+        }
+
+        String ICallable.Name => "PhaseOracle";
+        String ICallable.FullName => "Walks.PhaseOracle";
+        protected IAdjointable<(IQArray<Qubit>,IAdjointable)> ConversionTherapy__
         {
             get;
             set;
         }
 
-        protected ICallable<String, QVoid> Message__
+        public override Func<IAdjointable, IAdjointable> __Body__ => (__in__) =>
+        {
+            var markingOracle = __in__;
+#line 51 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            return ConversionTherapy__.Partial(new Func<IQArray<Qubit>, (IQArray<Qubit>,IAdjointable)>((__arg1__) => (__arg1__, markingOracle)));
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.ConversionTherapy__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,IAdjointable)>>(typeof(ConversionTherapy));
+        }
+
+        public override IApplyData __DataIn__(IAdjointable data) => new QTuple<IAdjointable>(data);
+        public override IApplyData __DataOut__(IAdjointable data) => new QTuple<IAdjointable>(data);
+        public static System.Threading.Tasks.Task<IAdjointable> Run(IOperationFactory __m__, IAdjointable markingOracle)
+        {
+            return __m__.Run<PhaseOracle, IAdjointable, IAdjointable>(markingOracle);
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 83, 95)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 83, 95)]
+    public partial class FlipFlop : Adjointable<(IQArray<Qubit>,IQArray<Qubit>)>, ICallable
+    {
+        public FlipFlop(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<Qubit>,IQArray<Qubit>)>, IApplyData
+        {
+            public In((IQArray<Qubit>,IQArray<Qubit>) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "FlipFlop";
+        String ICallable.FullName => "Walks.FlipFlop";
+        protected ICallable Length__
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(Boolean,String), QVoid> Microsoft__Quantum__Diagnostics__Fact
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<(Qubit,Qubit)> Microsoft__Quantum__Intrinsic__CNOT
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<QRange, QRange> RangeReverse__
+        {
+            get;
+            set;
+        }
+
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>), QVoid> __Body__ => (__in__) =>
+        {
+            var (x,y) = __in__;
+#line 84 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (m,n) = (x.Length, y.Length);
+#line 85 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply(((m == n), "Dimensjons of registers are unequal"));
+#line 87 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            foreach (var i in new QRange(0L, (m - 1L)))
+#line hidden
+            {
+#line 88 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                Microsoft__Quantum__Intrinsic__CNOT.Apply((x[i], y[i]));
+#line 89 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                Microsoft__Quantum__Intrinsic__CNOT.Apply((y[i], x[i]));
+            }
+
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (x,y) = __in__;
+#line 83 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (__qsVar0__m__,__qsVar1__n__) = (x.Length, y.Length);
+#line 83 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply(((__qsVar0__m__ == __qsVar1__n__), "Dimensjons of registers are unequal"));
+#line 83 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            foreach (var __qsVar2__i__ in RangeReverse__.Apply(new QRange(0L, (__qsVar0__m__ - 1L))))
+#line hidden
+            {
+#line 83 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                Microsoft__Quantum__Intrinsic__CNOT.Adjoint.Apply((y[__qsVar2__i__], x[__qsVar2__i__]));
+#line 83 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                Microsoft__Quantum__Intrinsic__CNOT.Adjoint.Apply((x[__qsVar2__i__], y[__qsVar2__i__]));
+            }
+
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Length__ = this.__Factory__.Get<ICallable>(typeof(global::Microsoft.Quantum.Core.Length<>));
+            this.Microsoft__Quantum__Diagnostics__Fact = this.__Factory__.Get<ICallable<(Boolean,String), QVoid>>(typeof(global::Microsoft.Quantum.Diagnostics.Fact));
+            this.Microsoft__Quantum__Intrinsic__CNOT = this.__Factory__.Get<IUnitary<(Qubit,Qubit)>>(typeof(global::Microsoft.Quantum.Intrinsic.CNOT));
+            this.RangeReverse__ = this.__Factory__.Get<ICallable<QRange, QRange>>(typeof(global::Microsoft.Quantum.Core.RangeReverse));
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,IQArray<Qubit>) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> x, IQArray<Qubit> y)
+        {
+            return __m__.Run<FlipFlop, (IQArray<Qubit>,IQArray<Qubit>), QVoid>((x, y));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 95, 103)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 95, 103)]
+    public partial class QuantumStep : Adjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable)>, ICallable
+    {
+        public QuantumStep(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable)>, IApplyData
+        {
+            public In((IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits, ((IApplyData)Data.Item3)?.Qubits, ((IApplyData)Data.Item4)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "QuantumStep";
+        String ICallable.FullName => "Walks.QuantumStep";
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable), QVoid> __Body__ => (__in__) =>
+        {
+            var (uTens,vTens,shift,coin) = __in__;
+#line 96 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            coin.Apply((uTens, vTens));
+#line 98 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            shift.Apply((uTens, vTens));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (uTens,vTens,shift,coin) = __in__;
+#line 95 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            shift.Adjoint.Apply((uTens, vTens));
+#line 95 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            coin.Adjoint.Apply((uTens, vTens));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> uTens, IQArray<Qubit> vTens, IAdjointable shift, IAdjointable coin)
+        {
+            return __m__.Run<QuantumStep, (IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable), QVoid>((uTens, vTens, shift, coin));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 103, 142)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 103, 142)]
+    public partial class QuantumWalk : Adjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64)>, ICallable
+    {
+        public QuantumWalk(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64)>, IApplyData
+        {
+            public In((IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits, ((IApplyData)Data.Item3)?.Qubits, ((IApplyData)Data.Item4)?.Qubits, ((IApplyData)Data.Item5)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "QuantumWalk";
+        String ICallable.FullName => "Walks.QuantumWalk";
+        protected ICallable Length__
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(Boolean,String), QVoid> Microsoft__Quantum__Diagnostics__Fact
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary Microsoft__Quantum__Canon__ApplyToEachCA
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<IAdjointable, IAdjointable> PhaseOracle__
+        {
+            get;
+            set;
+        }
+
+        protected IAdjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable)> QuantumStep__
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<QRange, QRange> RangeReverse__
+        {
+            get;
+            set;
+        }
+
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64), QVoid> __Body__ => (__in__) =>
+        {
+            var (uTens,vTens,shift,coin,oracle,k) = __in__;
+#line 107 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (m,n) = (uTens.Length, vTens.Length);
+#line 108 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply(((m == n), "Ill-defined workspace!"));
+#line 109 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Apply((Microsoft__Quantum__Intrinsic__H, uTens));
+#line 110 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Apply((Microsoft__Quantum__Intrinsic__H, vTens));
+#line 113 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var phaseOracle = PhaseOracle__.Apply(oracle);
+#line 115 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            foreach (var i in new QRange(1L, k))
+#line hidden
+            {
+#line 116 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                phaseOracle.Apply(QArray<Qubit>.Add(uTens, vTens));
+#line 117 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                QuantumStep__.Apply((uTens, vTens, shift, coin));
+            }
+
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (uTens,vTens,shift,coin,oracle,k) = __in__;
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (__qsVar0__m__,__qsVar1__n__) = (uTens.Length, vTens.Length);
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply(((__qsVar0__m__ == __qsVar1__n__), "Ill-defined workspace!"));
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var __qsVar2__phaseOracle__ = PhaseOracle__.Apply(oracle);
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            foreach (var __qsVar3__i__ in RangeReverse__.Apply(new QRange(1L, k)))
+#line hidden
+            {
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                QuantumStep__.Adjoint.Apply((uTens, vTens, shift, coin));
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                __qsVar2__phaseOracle__.Adjoint.Apply(QArray<Qubit>.Add(uTens, vTens));
+            }
+
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Adjoint.Apply((Microsoft__Quantum__Intrinsic__H, vTens));
+#line 103 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Adjoint.Apply((Microsoft__Quantum__Intrinsic__H, uTens));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Length__ = this.__Factory__.Get<ICallable>(typeof(global::Microsoft.Quantum.Core.Length<>));
+            this.Microsoft__Quantum__Diagnostics__Fact = this.__Factory__.Get<ICallable<(Boolean,String), QVoid>>(typeof(global::Microsoft.Quantum.Diagnostics.Fact));
+            this.Microsoft__Quantum__Canon__ApplyToEachCA = this.__Factory__.Get<IUnitary>(typeof(global::Microsoft.Quantum.Canon.ApplyToEachCA<>));
+            this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
+            this.PhaseOracle__ = this.__Factory__.Get<ICallable<IAdjointable, IAdjointable>>(typeof(PhaseOracle));
+            this.QuantumStep__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable)>>(typeof(QuantumStep));
+            this.RangeReverse__ = this.__Factory__.Get<ICallable<QRange, QRange>>(typeof(global::Microsoft.Quantum.Core.RangeReverse));
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> uTens, IQArray<Qubit> vTens, IAdjointable shift, IAdjointable coin, IAdjointable oracle, Int64 k)
+        {
+            return __m__.Run<QuantumWalk, (IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64), QVoid>((uTens, vTens, shift, coin, oracle, k));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 142, 153)]
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Adjoint, 142, 153)]
+    public partial class K4Coin : Adjointable<(IQArray<Qubit>,IQArray<Qubit>)>, ICallable
+    {
+        public K4Coin(IOperationFactory m) : base(m)
+        {
+        }
+
+        public class In : QTuple<(IQArray<Qubit>,IQArray<Qubit>)>, IApplyData
+        {
+            public In((IQArray<Qubit>,IQArray<Qubit>) data) : base(data)
+            {
+            }
+
+            System.Collections.Generic.IEnumerable<Qubit> IApplyData.Qubits
+            {
+                get
+                {
+                    return Qubit.Concat(((IApplyData)Data.Item1)?.Qubits, ((IApplyData)Data.Item2)?.Qubits);
+                }
+            }
+        }
+
+        String ICallable.Name => "K4Coin";
+        String ICallable.FullName => "Walks.K4Coin";
+        protected ICallable Length__
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<(Boolean,String), QVoid> Microsoft__Quantum__Diagnostics__Fact
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary Microsoft__Quantum__Canon__ApplyToEachCA
+        {
+            get;
+            set;
+        }
+
+        protected IUnitary<Qubit> Microsoft__Quantum__Intrinsic__H
+        {
+            get;
+            set;
+        }
+
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>), QVoid> __Body__ => (__in__) =>
+        {
+            var (uTens,vTens) = __in__;
+#line 144 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (m,n) = (uTens.Length, vTens.Length);
+#line 145 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply((((m == n) && (n == 2L)), "This does not represent K4 :(:(::("));
+#line 148 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Apply((Microsoft__Quantum__Intrinsic__H, vTens));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override Func<(IQArray<Qubit>,IQArray<Qubit>), QVoid> __AdjointBody__ => (__in__) =>
+        {
+            var (uTens,vTens) = __in__;
+#line 142 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            var (__qsVar0__m__,__qsVar1__n__) = (uTens.Length, vTens.Length);
+#line 142 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Diagnostics__Fact.Apply((((__qsVar0__m__ == __qsVar1__n__) && (__qsVar1__n__ == 2L)), "This does not represent K4 :(:(::("));
+#line 142 "/home/thomas/Documents/Quantum_walks/Program.qs"
+            Microsoft__Quantum__Canon__ApplyToEachCA.Adjoint.Apply((Microsoft__Quantum__Intrinsic__H, vTens));
+#line hidden
+            return QVoid.Instance;
+        }
+
+        ;
+        public override void __Init__()
+        {
+            this.Length__ = this.__Factory__.Get<ICallable>(typeof(global::Microsoft.Quantum.Core.Length<>));
+            this.Microsoft__Quantum__Diagnostics__Fact = this.__Factory__.Get<ICallable<(Boolean,String), QVoid>>(typeof(global::Microsoft.Quantum.Diagnostics.Fact));
+            this.Microsoft__Quantum__Canon__ApplyToEachCA = this.__Factory__.Get<IUnitary>(typeof(global::Microsoft.Quantum.Canon.ApplyToEachCA<>));
+            this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
+        }
+
+        public override IApplyData __DataIn__((IQArray<Qubit>,IQArray<Qubit>) data) => new In(data);
+        public override IApplyData __DataOut__(QVoid data) => data;
+        public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__, IQArray<Qubit> uTens, IQArray<Qubit> vTens)
+        {
+            return __m__.Run<K4Coin, (IQArray<Qubit>,IQArray<Qubit>), QVoid>((uTens, vTens));
+        }
+    }
+
+    [SourceLocation("/home/thomas/Documents/Quantum_walks/Program.qs", OperationFunctor.Body, 153, -1)]
+    public partial class TestingStates : Operation<QVoid, QVoid>, ICallable
+    {
+        public TestingStates(IOperationFactory m) : base(m)
+        {
+        }
+
+        String ICallable.Name => "TestingStates";
+        String ICallable.FullName => "Walks.TestingStates";
+        public static EntryPointInfo<QVoid, QVoid> Info => new EntryPointInfo<QVoid, QVoid>(typeof(TestingStates));
+        protected Allocate Allocate__
+        {
+            get;
+            set;
+        }
+
+        protected Release Release__
+        {
+            get;
+            set;
+        }
+
+        protected IAdjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64)> QuantumWalk__
+        {
+            get;
+            set;
+        }
+
+        protected IAdjointable<(IQArray<Qubit>,IQArray<Qubit>)> FlipFlop__
+        {
+            get;
+            set;
+        }
+
+        protected IAdjointable<(IQArray<Qubit>,IQArray<Qubit>)> K4Coin__
+        {
+            get;
+            set;
+        }
+
+        protected IAdjointable<(IQArray<Qubit>,Qubit)> IdentityOracle__
+        {
+            get;
+            set;
+        }
+
+        protected ICallable Microsoft__Quantum__Diagnostics__DumpMachine
+        {
+            get;
+            set;
+        }
+
+        protected ICallable<IQArray<Qubit>, QVoid> ResetAll__
         {
             get;
             set;
@@ -62,24 +747,42 @@ namespace Walks
         {
 #line hidden
             {
-#line 9 "/home/thomas/Documents/Quantum_walks/Program.qs"
-                var qbit = Allocate__.Apply();
+#line 154 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                var uTens = Allocate__.Apply(2L);
 #line hidden
                 bool __arg1__ = true;
                 try
                 {
-#line 10 "/home/thomas/Documents/Quantum_walks/Program.qs"
-                    Microsoft__Quantum__Intrinsic__H.Apply(qbit);
-#line 11 "/home/thomas/Documents/Quantum_walks/Program.qs"
-                    if ((Microsoft__Quantum__Measurement__MResetZ.Apply(qbit) == Result.Zero))
+#line hidden
                     {
-#line 12 "/home/thomas/Documents/Quantum_walks/Program.qs"
-                        Message__.Apply("Hello quantum world!");
-                    }
-                    else
-                    {
-#line 15 "/home/thomas/Documents/Quantum_walks/Program.qs"
-                        Message__.Apply("Hi quantum world!");
+#line 155 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                        var vTens = Allocate__.Apply(2L);
+#line hidden
+                        bool __arg2__ = true;
+                        try
+                        {
+#line 157 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                            QuantumWalk__.Apply((uTens, vTens, FlipFlop__, K4Coin__, IdentityOracle__, 12L));
+#line 158 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                            Microsoft__Quantum__Diagnostics__DumpMachine.Apply(QVoid.Instance);
+#line 159 "/home/thomas/Documents/Quantum_walks/Program.qs"
+                            ResetAll__.Apply(QArray<Qubit>.Add(uTens, vTens));
+                        }
+#line hidden
+                        catch
+                        {
+                            __arg2__ = false;
+                            throw;
+                        }
+#line hidden
+                        finally
+                        {
+                            if (__arg2__)
+                            {
+#line hidden
+                                Release__.Apply(vTens);
+                            }
+                        }
                     }
                 }
 #line hidden
@@ -94,7 +797,7 @@ namespace Walks
                     if (__arg1__)
                     {
 #line hidden
-                        Release__.Apply(qbit);
+                        Release__.Apply(uTens);
                     }
                 }
             }
@@ -108,16 +811,19 @@ namespace Walks
         {
             this.Allocate__ = this.__Factory__.Get<Allocate>(typeof(global::Microsoft.Quantum.Intrinsic.Allocate));
             this.Release__ = this.__Factory__.Get<Release>(typeof(global::Microsoft.Quantum.Intrinsic.Release));
-            this.Microsoft__Quantum__Intrinsic__H = this.__Factory__.Get<IUnitary<Qubit>>(typeof(global::Microsoft.Quantum.Intrinsic.H));
-            this.Microsoft__Quantum__Measurement__MResetZ = this.__Factory__.Get<ICallable<Qubit, Result>>(typeof(global::Microsoft.Quantum.Measurement.MResetZ));
-            this.Message__ = this.__Factory__.Get<ICallable<String, QVoid>>(typeof(global::Microsoft.Quantum.Intrinsic.Message));
+            this.QuantumWalk__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,IQArray<Qubit>,IAdjointable,IAdjointable,IAdjointable,Int64)>>(typeof(QuantumWalk));
+            this.FlipFlop__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,IQArray<Qubit>)>>(typeof(FlipFlop));
+            this.K4Coin__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,IQArray<Qubit>)>>(typeof(K4Coin));
+            this.IdentityOracle__ = this.__Factory__.Get<IAdjointable<(IQArray<Qubit>,Qubit)>>(typeof(IdentityOracle));
+            this.Microsoft__Quantum__Diagnostics__DumpMachine = this.__Factory__.Get<ICallable>(typeof(global::Microsoft.Quantum.Diagnostics.DumpMachine<>));
+            this.ResetAll__ = this.__Factory__.Get<ICallable<IQArray<Qubit>, QVoid>>(typeof(global::Microsoft.Quantum.Intrinsic.ResetAll));
         }
 
         public override IApplyData __DataIn__(QVoid data) => data;
         public override IApplyData __DataOut__(QVoid data) => data;
         public static System.Threading.Tasks.Task<QVoid> Run(IOperationFactory __m__)
         {
-            return __m__.Run<SayHello, QVoid, QVoid>(QVoid.Instance);
+            return __m__.Run<TestingStates, QVoid, QVoid>(QVoid.Instance);
         }
     }
 }

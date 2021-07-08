@@ -1,0 +1,77 @@
+\section{Kvanteberegninger}
+
+\subsection{Intro til kvantemekanikk}
+
+    \subsubsection*{Notasjon}
+
+        La $\mathcal{H}$ være et Hilbertrom, vi definerer $\partial D(\mathcal{H})=\{v:\mathcal{H}\mid ||v||=1\}$ til å være enhetskulen i $\mathcal{H}$ og $U(\mathcal{H})$ til å være mengden av unitære operatorer på $\mathcal{H}$.
+
+    \subsubsection*{Postulatene i kvante}
+
+        Kvantemekanikk er en beskrivelse av fysiske systemer på små størrelse. Reglene for hvordan disse systemene oppfører seg er formulert utifra 6 postulater. Postulatene går som følger
+        \begin{enumerate}
+            \item På hvert øyeblikk er tilstanden til det fysiske systemet beskrevet av en ket $|\psi\rangle$ i rommet av tilstander.
+            \item Enhver observabel fysisk egenskap av systemet er beskrevet av en operator som virker på ketten som beskriver systemet.
+            \item De eneste mulige resultatene av en måling av en observabel $\mathcal{A}$ er egenverdiene til den assosierte operatoren $A$.
+            \item Når en måling er gjort på en tilstand $|\psi\rangle$ er sannsynligheten for å få en egenverdi $a_n$ gitt ved kvadratet av indreproduktet til $|\psi\rangle$ sammen med egentilstanden $\langle a_n|$: $|\langle a_n|\psi\rangle|^2$.
+            \item Umiddelbart etter en måling av en observabel $\mathcal{A}$ har gitt egenverdien $a_n$, er systemet i tilstanden til den normaliserte egentilstanden $|a_n\rangle$.
+            \item Tidsutviklingen til et system bevarer normen til en ket $|\psi\rangle$.
+        \end{enumerate}
+
+        Disse postulatene tolkes som at en ket $|\psi\rangle$ er representert av en vektor i et (kompleks separabelt) Hilbertrom $\psi :\mathcal{H}$. Identitetsoperatoren er en observabel som ikke endrer systemet etter måling, men det følger at $||\psi||^2 = 1$ fra postulat 4. Det 6-te postulatet etablerer at de eneste transformasjonene som har lov til å virke på et system er nøyaktig de som er unitære\todo[color=yellow]{Få med den reversible naturen til unitære operatorer?}. Postulat 1,4 og 6 forteller oss dermed at en tilstand er et element $\psi$ i $U(\mathcal{H})$-mengden $\partial D(\mathcal{H})$. Et element $\psi:\partial D(\mathcal{H})$ kan skrives som en sum av basisvektorer $\psi = \Sigma_{i=1}^{n}p_i\cdot e_i$, det sies da at $\psi$ er i en superposisjon av alle basisvektorene som har koeffisienter $p_i \neq 0$. Videre fra postulat 2,3 og 5 følger det at enhver operator assosiert med en observabel må være Hermitisk.
+
+        \todo[color=yellow]{Er det noe mer jeg trenger å nevne om kvantemekanikk? Kanskje utdype hvorfor det er viktig at vi har en handling fra den unitære gruppen, eller hvordan målinger virker?}
+
+\subsection{Qubits og kvantekretser}
+    
+        Klassiske bits har to tilstander: 0 eller 1. Kvantebits, eller qubits utnytter naturen til kvantemekanikken for å lage superposisjoner av tilstandene 0 og 1. For å lage et fysisk system med 2 tilstander velges en qubit til å være et element i $\partial D^2$($=\partial D(\mathbb{C}^2)$), som kan ta på seg formen $q = a_0|0\rangle + a_1|1\rangle$. Her er $|0\rangle = \begin{pmatrix}
+            1 \\ 0
+        \end{pmatrix}$ og $|1\rangle=\begin{pmatrix}
+                0 \\ 1
+        \end{pmatrix}$ en basis for rommet $\mathbb{C}^2$. For å konstruere strenger av qubits ser man på tensorproduktet mellom de underliggende Hilbertrommene. F.eks. har man fire forskjellige klassiske bitstrenger 00, 01, 10 og 11, kvantevarianten av disse vil da være $|0\rangle \otimes |0\rangle$, $|0\rangle\otimes|1\rangle$, $|1\rangle\otimes |0\rangle$ og $|1\rangle\otimes |1\rangle$. Siden qubits kan være i en superposisjon av klassiske tilstander, tillater vi at de er summer av elementære tensorer, og derfor kan vi finne tilstandene som elementer i $\partial D^4 = \partial D(\mathbb{C}^2 \otimes \mathbb{C}^2)$. En mer kortfattet notasjon dropper tensortegnet og skriver heller $|00\rangle$ for $|0\rangle\otimes |0\rangle$. \todo[color=yellow]{Skrive mer om tensorproduktet?}
+
+        Et eksempel på hvordan disse qubitene oppfører seg i naturen er via EPR (Einstein, Podolsky og Rosen) paret. Vi sier at et system av qubits er sammenfiltret hvis det ikke kan skrives som en elementær tensor, altså på formen. Et EPR par er et 2-qubit system på formen $\psi = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$. Man kan se at dette systemet er sammenfiltret, ettersom de to elementære tensorene ikke har noen felles faktorer. Hvis vi derimot måler den første qubiten i systemet vil vi ende opp med at det er en $(\frac{1}{\sqrt{2}})^2 = 50\%$ sjanse for å måle $0$ og $50\%$ sjanse for å måle $1$. Hvis vi derimot har målt $0$ på den første qubiten, så vil systemet kollapse til $\psi = |00\rangle$, og vi vet dermed at den andre qubiten må være i tilstand $|0\rangle$. \todo[color=yellow]{Legg til mer formalitet og kom med flere eksempler etterpå?}
+
+\subsection{Kvantealgoritmer og orakler}
+
+        \todo[color=yellow]{Hva er en kvantealgoritme?}
+        En kvantealgoritme er en komposisjon av unitære operatorer og målinger som opererer på en tilstand $\psi$ i $\partial D(\mathcal{H})$. Når man diskuterer Kvantealgoritmer er det normalt å diskutere de i sammenheng med en kvantekrets, logiske kvanteporter, register og arbeidsplass. Registeret er de qubitsene som man har som input i programmet, og arbeidsplassen er ekstra qubits som man kan bruke for å gjøre operasjoner på registeret med. En logisk kvanteport er en port som utfører en unitær operasjon eller måling på en eller flere qubits, disse komponerer man i et flytdiagram for å danne en kvantekrets. \todo[color=magenta]{Bilde av kvantekrets her}
+
+        De simpleste logiske kvanteportene som vi har er de som operer på 1 qubit, dette er de unitære matrisene over $\mathbb{C}^2$. Av de mest kjente så har vi matrisene:
+        \begin{center}
+            \begin{math}
+                I = \begin{pmatrix}
+                    1 & 0 \\ 0 & 1
+                \end{pmatrix},\ X = \begin{pmatrix}
+                    0 & 1 \\ 1 & 0
+                \end{pmatrix},\ Y = \begin{pmatrix}
+                    0 & -i \\ i & 0
+                \end{pmatrix},\ Z = \begin{pmatrix}
+                    1 & 0 \\ 0 & -1
+                \end{pmatrix},\ R_\theta = \begin{pmatrix}
+                    1 & 0 \\ 0 & e^{i\theta}
+                \end{pmatrix} og\ H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                    1 & 1 \\ 1 & 1
+                \end{pmatrix}
+            \end{math}
+        \end{center}
+
+        $I$, $X$, $Y$ og $Z$ matrisene kalles for Pauli matriser, $R_\theta$ kalles for en phaseskift matrise og $H$ kalles for Hadamard matrisen. To andre viktige porter er CNOT og SWAP, som operer på 2-qubits. CNOT, også kalt for "controlled not" operer på 2-qubits ved å anvende $X$ matrisen på den andre qubiten i registeret hvis den første qubiten har verdi 1. SWAP bytter om på rekkefølgen til qubitene.
+        \begin{center}
+            \begin{math}
+                CNOT = \begin{pmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & 1 & 0 & 0 \\
+                    0 & 0 & 0 & 1 \\
+                    0 & 0 & 1 & 0
+                \end{pmatrix},\ SWAP = \begin{pmatrix}
+                    1 & 0 & 0 & 0 \\
+                    0 & 0 & 1 & 0 \\
+                    0 & 1 & 0 & 0 \\
+                    0 & 0 & 0 & 1
+                \end{pmatrix}
+            \end{math}
+        \end{center}\todo[color = magenta]{Tegn kretser av hvordan disse virker}
+        \todo[color=yellow]{Universalitet av kvante kretser?}
+
+        Skriv noe om merkeorakel og faseorakel. Hvorfor trenger vi de, og hva brukes de til? Hva er problemet når det kommer til orakler?

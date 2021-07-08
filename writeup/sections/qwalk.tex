@@ -1,0 +1,32 @@
+\section{Kvantevandringer}
+
+\subsection{Grover's algoritme og metoden av amplitude amplifikasjon}
+
+    Grover's algoritme løser et veldig spesifikt problem, men teknikken som den bruker for å løse problemet er veldig interessant å studere. Problemet går som følger: Tenk at man er gitt en bistring med $N=2^n$ bits, hvor $t$ bits er satt til 1. Finn minst 1 bit som har verdi 1. Dette problemet kan åpenbart løses i worst case lineær tid med konstant minne ved å randomisert iterere gjennom alle bitene og sjekke om de er 1 eller 0. Om den er 1 kan man terminere programmet, og returnere den posisjon som ga 1. Grover's algoritme har en kvadratisk hastighetsøkning ved å manipulere superposisjoner av qbits.
+
+    For å beskrive problemet med et fysisk kvante system trenger vi å oversette problemet først. La $(b_k)_N$ være bitstringen med lengde N, definer så orakelet $\mathcal{O}_{(b_k)_N}:\mathbb{C}^{2^n} \otimes \mathbb{C}^2 \rightarrow \mathbb{C}^{2^n} \otimes \mathbb{C}^2$ til å merke målbiten hvis registerbiten var en løsning. Dette vil si at hvis $\mathcal{O}_{(b_k)_N}(|r\rangle\otimes |0\rangle) = |r\rangle\otimes |1\rangle$ så følger det at $b_r = 1$. For å fullføre Grover's algoritme trenger vi en ny matrise til, og det er en matrise som flipper fortegnet til registeret hvis den ikke er tilstanden $|0\rangle^{\otimes n}$.
+    \begin{center}
+        \begin{math}
+            R = \begin{pmatrix}
+                1 & 0 & ... \\
+                0 & -1 & ... \\
+                \vdots & \vdots & \ddots
+            \end{pmatrix}
+        \end{math}
+    \end{center}
+
+    En Grover iterate $\mathcal{G}$ er definert som $\mathcal{G}=H^{\otimes n}RH^{\otimes n}\mathcal{O}_{(b_k)_N}$. Algoritmen Gorver's algoritme er definert som $G = M\mathcal{G}^k\circ H^{\otimes n}$, hvor $M$ er en projektiv måling, og $k$ er en konstant. Man skal da kunne fastslå med en høy sannsynlighet at målingen gir deg posisjonen til en bit i $(b_k)_N$ som er $1$. For å finne denne $k$-en som man bruker for å kjøre algoritmen trenger vi se på metoden av amplitude amplifikasjon.
+
+    \lipsum[7]
+        
+\subsection{Kvantevandringer basert på kvantemyntkast}
+
+\lipsum[8]
+
+\lipsum[9]
+
+\lipsum[10]
+
+\subsection{Kvantesøk}
+
+\lipsum[11]

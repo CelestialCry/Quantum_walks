@@ -31,3 +31,6 @@ cabal.project.local~
 *.out
 *.gz
 *.toc
+
+.fake
+.ionide

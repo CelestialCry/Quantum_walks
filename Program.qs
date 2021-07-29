@@ -5,6 +5,7 @@ namespace Walks {
     open Microsoft.Quantum.Measurement;
     open Microsoft.Quantum.Diagnostics;
     open Microsoft.Quantum.Math;
+    open Microsoft.Quantum.Convert as Convert;
     
     // @EntryPoint()
     operation SayHello() : Unit {
@@ -34,39 +35,39 @@ namespace Walks {
             }
         }
 
-        // This operation takes a marking oracle and applies the operation which gives it the form of a phase oracle
-        operation ConversionTherapy(register : Qubit[], oracle : ((Qubit[],Qubit) => Unit is Adj)) : Unit is Adj {
-            use target = Qubit();
-            within {
-                X(target);
-                H(target);
-            }
-            apply {
-                oracle(register, target);
-            }
+    // This operation takes a marking oracle and applies the operation which gives it the form of a phase oracle
+    operation ConversionTherapy(register : Qubit[], oracle : ((Qubit[],Qubit) => Unit is Adj)) : Unit is Adj {
+        use target = Qubit();
+        within {
+            X(target);
+            H(target);
         }
+        apply {
+            oracle(register, target);
+        }
+    }
 
-        // This function takes a marking oracle and converts it to a phase oracle
-        function PhaseOracle(markingOracle : ((Qubit[],Qubit) => Unit is Adj)) : (Qubit[] => Unit is Adj) {
-            return ConversionTherapy(_,markingOracle);
-        }
+    // This function takes a marking oracle and converts it to a phase oracle
+    function PhaseOracle(markingOracle : ((Qubit[],Qubit) => Unit is Adj)) : (Qubit[] => Unit is Adj) {
+        return ConversionTherapy(_,markingOracle);
+    }
 
-        operation GroversIterate(register : Qubit[], phaseOracle : (Qubit[] => Unit is Adj)) : Unit is Adj {
-            phaseOracle(register);
-            within {
-                ApplyToEachCA(H, register);
-            }
-            apply {
-                PhaseOracle(AllZerosOracle)(register);
-            }
+    operation GroversIterate(register : Qubit[], phaseOracle : (Qubit[] => Unit is Adj)) : Unit is Adj {
+        phaseOracle(register);
+        within {
+            ApplyToEachCA(H, register);
         }
+        apply {
+            PhaseOracle(AllZerosOracle)(register);
+        }
+    }
 
     // Grover's algorithm
 
         // Grovers algorithm (without corrections)
-        operation GroversAlgorithm(markingOracle : ((Qubit[],Qubit) => Unit is Adj), N : Int, k : Int) : Unit {
+        operation GroversAlgorithm(register : Qubit[], markingOracle : ((Qubit[],Qubit) => Unit is Adj), k : Int) : Unit {
             let phaseOracle = PhaseOracle(markingOracle);
-            use register = Qubit[N];
+            // use register = Qubit[N];
             ApplyToEachCA(H, register);
 
             for i in 1..k {
@@ -74,92 +75,198 @@ namespace Walks {
             }
         }
 
+        operation OppositePhaseShift(qubit : Qubit) : Unit is Adj + Ctl {
+            within {
+                X(qubit);
+            }
+            apply {
+                Z(qubit);
+            }
+        }
+
+        // An oracle which takes a 4-qubit input and checks if it is an answer to 0010001000000010
+        operation ExampleOracle(register : Qubit[], target : Qubit) : Unit
+        is Adj {
+            Fact(Length(register) == 4, "This is not a valid input");
+
+            // Checks if the input qubit is a 2
+            within {
+                X(register[3]);
+                X(register[2]);
+                X(register[0]);
+            }
+            apply {
+                Controlled X(register, target);
+            }
+
+            // Checks if the input qubit is a 6
+            within {
+                X(register[3]);
+                X(register[0]);
+            }
+            apply {
+                Controlled X(register, target);
+            }
+
+            // Checks if the input qubit is a 14
+            within {
+                X(register[0]);
+            }
+            apply {
+                Controlled X(register, target);
+            }
+        }
+
+        // Testing Grover on ExampleOracle
+        // @EntryPoint()
+        operation GroverTest() : Unit {
+            use reg = Qubit[4];
+            GroversAlgorithm(reg, ExampleOracle, 3);
+            DumpMachine();
+            ResetAll(reg);
+        }
+
+    // Coin definitions goes here
+        operation GroverCoin(coin : Qubit[]) : Unit is Adj {
+            // Defining the correct phase oracle
+            let AllZerosPhaseOracle = PhaseOracle(AllZerosOracle);
+            
+            // Conjugating AllZerosPhaseOracle to DiagonalStatePhaseOracle
+            within {
+                ApplyToEachA(H, coin);
+            }
+            apply {
+                AllZerosPhaseOracle(coin);
+            }            
+        }
+
+        
+
     // Quantum walk algorithm goes here
         //The quantum walk algorithm uses arcs to traverse a graph. For a graph G=(V,E), we will let the algorithm work on the space ℂV⊗ℂV.
         // The elements which we will operate on live inside ℂ(E∐E)⊆ℂV⊗ℂV. Thus in order to define unitary transformations,
         // it suffices to define unitary transformations on tensors, and check that it is correct when restricting to the appropriate subspace.
 
-    // The flip-flopping shift operator, described on tensors
-    operation FlipFlop(x : Qubit[], y : Qubit[]) : Unit is Adj {
-        let (m, n) = (Length(x), Length(y));
-        Fact(m == n, "Dimensjons of registers are unequal");
+        // The flip-flopping shift operator on arcs, described on tensors
+        operation ArcFlipFlop(x : Qubit[], y : Qubit[]) : Unit is Adj {
+            let (m, n) = (Length(x), Length(y));
+            Fact(m == n, "Dimensjons of registers are unequal");
 
-        for i in 0..m-1 {
-            CNOT(x[i],y[i]);
-            CNOT(y[i],x[i]);
+            for i in 0..m-1 {
+                CNOT(x[i],y[i]);
+                CNOT(y[i],x[i]);
+            }
         }
-    }
 
-    // Defining Quantum walks on tensors
-    // First the coin is flipped, and then we walk accordingly to which of the many faces the coin may have landed on.
-    operation QuantumStep(uTens : Qubit[], vTens : Qubit[], shift : ((Qubit[], Qubit[]) => Unit is Adj), coin : ((Qubit[], Qubit[]) => Unit is Adj)) : Unit is Adj {
-        coin(uTens, vTens);
-        // DumpMachine();
-        shift(uTens, vTens);
-    }
+        // Defining Quantum walks on tensors
+        // First the coin is flipped, and then we walk accordingly to which of the many faces the coin may have landed on.
+        operation QuantumArcStep(uTens : Qubit[], vTens : Qubit[], shift : ((Qubit[], Qubit[]) => Unit is Adj), coin : ((Qubit[], Qubit[]) => Unit is Adj)) : Unit is Adj {
+            coin(uTens, vTens);
+            shift(uTens, vTens);
+        }
 
-    // Defining a global quantum walk
-    // Non-queried walk is obtained by applying the identity oracle
-    operation QuantumWalk(uTens : Qubit[], vTens : Qubit[], shift : ((Qubit[], Qubit[]) => Unit is Adj), coin : ((Qubit[],Qubit[]) => Unit is Adj), oracle : ((Qubit[], Qubit) => Unit is Adj), k : Int) : Unit is Adj {
-        // Initializing workspace
-        // use uTens = Qubit[n];
-        // use vTens = Qubit[n];
-        let (m,n) = (Length(uTens),Length(vTens));
-        Fact(m == n, "Ill-defined workspace!");
-        ApplyToEachCA(H, uTens);
-        ApplyToEachCA(H, vTens);
+        // Defining a global quantum walk
+        // Non-queried walk is obtained by applying the identity oracle
+        operation QuantumArcWalk(uTens : Qubit[], vTens : Qubit[], shift : ((Qubit[], Qubit[]) => Unit is Adj), coin : ((Qubit[],Qubit[]) => Unit is Adj), oracle : ((Qubit[], Qubit) => Unit is Adj), k : Int) : Unit is Adj {
+            // Checkinng if workspace assumptions are correct
+            let (m,n) = (Length(uTens),Length(vTens));
+            Fact(m == n, "Ill-defined workspace!");
 
-        // Running walking algorithm
-        let phaseOracle = PhaseOracle(oracle);
+            ApplyToEachCA(H, uTens);
+            ApplyToEachCA(H, vTens);
+
+            // Running walking algorithm
+            let phaseOracle = PhaseOracle(oracle);
+            
+            for i in 1..k {
+                phaseOracle(uTens + vTens);
+                QuantumArcStep(uTens, vTens, shift, coin);
+            }
+        }
+
+    // Trying to model a quantum walk on a 3-regular graph with 8 vertices. It look kinda like 2 kites melded together.
+    operation OddVertexOracle(pos : Qubit[], color : Qubit[], target : Qubit) : Unit
+    is Adj + Ctl {
+        // This oracle should only tag if color = 11
         
-        for i in 1..k {
-            phaseOracle(uTens + vTens);
-            QuantumStep(uTens, vTens, shift, coin);
+        // Checks if pos = 000
+        within {
+            ApplyToEachCA(X, pos);
+        }
+        apply {
+            Controlled X(pos+color, target);
+        }
+
+        // Checks if pos = 111
+        Controlled X(pos+color, target);
+
+        // Checks if pos = 011
+        within {
+            X(pos[2]);
+        }
+        apply {
+            Controlled X(pos+color, target);
+        }
+
+        // Checks if pos = 100
+        within {
+            X(pos[0]);
+            X(pos[1]);
+        }
+        apply {
+            Controlled X(pos+color, target);
         }
     }
     
-    // Quantum walk on K_4 with loops
-    // K_4 has 4 vertices, these may be encoded as |00⟩, |01⟩, |10⟩ and |11⟩
-    // On each vertex there are three edges, they may each be given a color: red, yellow, blue or magenta (|00⟩, |01⟩, |10⟩ and |11⟩)
-    // NB! In this test we allow an edge from a vertex to itself.
-    // An edge from |00⟩ to |01⟩ is written as |00⟩⊗|01⟩
+    operation ExampleFlipFlop(pos : Qubit[], color : Qubit[]) : Unit
+    is Adj + Ctl {
+        use anc = Qubit();
+        OddVertexOracle(pos, color, anc);
+        Controlled X([color[0]], pos[0]);
+        Controlled X([color[1]], pos[1]);
+        Controlled X([anc], pos[2]);
+        OddVertexOracle(pos, color, anc);
+    }
 
-    // Set a qbit in |00⟩ into the state 1 / sqrt(3) (|00⟩ + |01⟩ + |10⟩)
-    operation ThreeStates(qs : Qubit[]) : Unit is Adj {
-        // Rotate first qbit to (sqrt(2) |0) + |1⟩) / sqrt(3)
-        let theta = ArcSin(1.0 / Sqrt(3.0));
-        Ry(2.0 * theta, qs[0]);
-
-        // Split the state sqrt(2) |0⟩ ⊗ |0⟩ into |00⟩ + |01⟩
+    operation ExampleMark(pos : Qubit[], target : Qubit) : Unit
+    is Adj + Ctl {
+        // Marks 101
         within {
-            X(qs[0]);
-        }
+            X(pos[1]);
+        }   
         apply {
-            Controlled H([qs[0]], qs[1]);
+            Controlled X(pos, target);
         }
     }
 
-    operation K4Coin(uTens : Qubit[], vTens : Qubit[]) : Unit is Adj {
-        // Check well-definedness
-        let (m, n) = (Length(uTens), Length(vTens));
-        Fact(m == n and n == 2, "This does not represent K4 :(:(::(");
-
-        // Coin operation
-        ApplyToEachCA(H,vTens);
-        
-    }
-
+    // Test av vandring på eksempel graf
     @EntryPoint()
-    operation TestingStates() : Unit {
-        use uTens = Qubit[2];
-        use vTens = Qubit[2];
+    operation Test() : Unit {
+        use pos = Qubit[3];
+        use color = Qubit[2];
+        let ExampleCoin = ApplyToEachCA(H, _);
+        let phaseOracle = PhaseOracle(ExampleMark);
 
-        QuantumWalk(uTens, vTens, FlipFlop, K4Coin, IdentityOracle, 12);
+        // ApplyToEachCA(H, pos + color);
+
+        //
+        // Denne virker etter 4, 17 iterasjoner, og deretter har en ny lokal maks etter 41 iterasjoner, hvorfor?
+        // Jeg har kjørt den på nytt og på nytt og på nytt og fått forskjellige resultater hver gang, det er noe jeg gjør galt...
+        // Å måle fargene fikk bølgefunksjonen til å kollapse og noen tilstander forsvant.
+        for i in 1..2 {
+            phaseOracle(pos);
+            ExampleCoin(color);
+            ExampleFlipFlop(pos, color);
+        }
+
         DumpMachine();
-        ResetAll(uTens + vTens);
+        // Bruker dette istedenfor DumpMachine(), ettersom det er lettere å se hva som foregår. Jeg burde lære meg hvordan man kaller på dette via python.
+        // let m = MultiM(pos);
+        // let s = Convert.ResultArrayAsInt(m);
+        // Message(Convert.IntAsString(s));
+        ResetAll(color);
+        ResetAll(pos);
     }
-
-
 }
 
 

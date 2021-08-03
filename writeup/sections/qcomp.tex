@@ -1,12 +1,12 @@
 \section{Kvanteberegninger}
 
-\subsection{Intro til kvantemekanikk}
+% \subsection{Intro til kvantemekanikk}
 
-    \subsubsection*{Notasjon}
+    % \subsubsection*{Notasjon}
 
-        La $\mathcal{H}$ være et Hilbertrom, vi definerer $\partial D(\mathcal{H})=\{v:\mathcal{H}\mid ||v||=1\}$ til å være randen av enhetskulen i $\mathcal{H}$ og $U(\mathcal{H})$ til å være mengden av unitære operatorer på $\mathcal{H}$. I fysikk bruker man en ket $|\_\rangle$ for å utheve at et element i keten er en vektor, på samme måte som pil notasjon for vektorer. En bra $\langle\_ |$ betegner det elementet i dualrommet som gjør at $\langle\psi |\psi\rangle = ||\psi||^2$. Dette er veldefinert fra Riesz-Frechet representasjons teorem.
+    %     La $\mathcal{H}$ være et Hilbertrom, vi definerer $\partial D(\mathcal{H})=\{v:\mathcal{H}\mid ||v||=1\}$ til å være randen av enhetskulen i $\mathcal{H}$ og $U(\mathcal{H})$ til å være mengden av unitære operatorer på $\mathcal{H}$. I fysikk bruker man en ket $|\_\rangle$ for å utheve at et element i keten er en vektor, på samme måte som pil notasjon for vektorer. En bra $\langle\_ |$ betegner det elementet i dualrommet som gjør at $\langle\psi |\psi\rangle = ||\psi||^2$. Dette er veldefinert fra Riesz-Frechet representasjons teorem.
 
-    \subsubsection*{Postulatene i kvante}
+    \subsection{Postulatene i kvantemekanikk}
 
         Kvantemekanikk er en beskrivelse av fysiske systemer på små størrelser. Reglene for hvordan disse systemene oppfører seg er formulert utifra 6 postulater. \cite{Jaffe_2007} og \cite{portugal_2019} definerer postulatene som følger
         \begin{enumerate}
@@ -34,7 +34,7 @@
             |\psi\rangle : \partial D(\mathcal{H}) = \{v:\mathcal{H}\mid ||v||=1\}
         \end{align*}
 
-        Det siste postulatet forteller oss hvordan et system utvikler seg. Formelen $|\psi (t)\rangle = U(t,t_0)|\psi (t_0)\rangle$ brukes ofte for å beskrive hvordan dette ser ut. Siden vi krever at $U(t,t_0)$ skal bevare normen til $|\psi (t_0)\rangle$, dvs. at det finnes en virkning $U(t,t_0):\partial D(\mathcal{H})\rightarrow\partial D(\mathcal{H})$, følger det at denne operatoren er unitær. Mengden $U(\mathcal{H})$ vil betegne de unitære operatorene som operer på det Hilbertrommet. For vårt formål kan man tenke på et kvantesystem i $U(\mathcal{H})$-mengden $\partial D(\mathcal{H})$.
+        Det siste postulatet forteller oss hvordan et system utvikler seg. Formelen $|\psi (t)\rangle = U(t,t_0)|\psi (t_0)\rangle$ brukes ofte for å beskrive hvordan dette ser ut. Siden vi krever at $U(t,t_0)$ skal bevare normen til $|\psi (t_0)\rangle$, dvs. at det finnes en virkning $U(t,t_0):\partial D(\mathcal{H})\rightarrow\partial D(\mathcal{H})$, følger det at denne operatoren er unitær. Mengden $U(\mathcal{H})$ vil betegne de unitære operatorene som operer på det Hilbertrommet. For vårt formål kan man tenke på et kvantesystem som et element i $U(\mathcal{H})$-mengden $\partial D(\mathcal{H})$.
 
         Som beskrevet av \cite{portugal_2019} kan man lage kompositter av kvantesystemer med det algebraiske tensorproduktet. Gitt to foskjellige kvantesystemer beskrevet av to forskjellige Hilbertrom $\mathcal{H}_1$ og $\mathcal{H}_2$ så kan man lage rommet av sammensatte tilstander som $\mathcal{H}_1\otimes\mathcal{H}_2$. Vi får da en klasse med observable og en klasse med operatorer som handler på systemene gjennom tensorproduktet. Man kan vise at tensorproduktet av to unitære og hermitiske matriser er igjen unitære og hermitiske, det er derfor veldefinert å betrakte tensoren for kompositt systemer. Sammenfiltringsfenomenet foregår når man konstruerer slike kompositt systemer. Hvis vi antar at vi har to partikler med spin egenskapen $\phi$ og $\psi$ og komposittsystemet $|\phi\psi\rangle = \sigma_0e_0\otimes e_0 + \sigma_1e_1\otimes e_1$, så vil en måling av den ene partikkelen ende opp med å måle den andre partikkelen. Dersom man måler egenverdien til $e_0$ for $\phi$ så vil systemet kollapse til $\frac{1}{\sigma_0}P_1\otimes I(|\phi\psi\rangle) = e_0\otimes e_0$. Dette medfører at alle målinger av $\psi$ vil gi egenverdien $1$.
 
@@ -46,17 +46,27 @@
         \begin{align*}
             q = q_{00}|0\rangle\otimes |0\rangle + q_{01}|0\rangle\otimes |1\rangle + q_{10}|1\rangle\otimes|0\rangle + q_{11}|1\rangle\otimes |1\rangle
         \end{align*}
-        For kortfatthetens skyld skriver vi $|ab\rangle = |a\rangle\otimes |b\rangle$. Notasjonen $|\_\rangle$ vil få en ekstra presisjon i denne rapporten. La $nBit$ være mengden av strenger med n-bits, vi definerer $|\_\rangle : \bigcup_{n=0}^{\infty}nBits \rightarrow \mathbb{T}(\mathbb{C}^2)$ til å være en funksjon fra alle strenger og inn i tensoralgebraen til $\mathbb{C}^2$. Den er definert på $|0\rangle$ og $|1\rangle$ som over, også utvides den lineært og fritt over tensoralgebraen. 
+        For kortfatthetens skyld skriver vi $|ab\rangle = |a\rangle\otimes |b\rangle$. Notasjonen $|\_\rangle$ vil få en ekstra presisjon i denne rapporten. La $nBit$ være mengden av strenger med n-bits, vi definerer $|\_\rangle : \bigcup_{n=0}^{\infty}nBits \rightarrow \mathbb{T}(\mathbb{C}^2)$ til å være en funksjon fra alle strenger og inn i tensoralgebraen til $\mathbb{C}^2$. Den er definert på $|0\rangle$ og $|1\rangle$ som over, også utvides den lineært og fritt over tensoralgebraen. En av de viktigste egenskapene qubits har som bits ikke har er nemlig at to eller flere qubits kan bli sammenfiltret.
 
-        % Et eksempel på hvordan disse qubitene oppfører seg i naturen er via EPR (Einstein, Podolsky og Rosen) paret. Vi sier at et system av qubits er sammenfiltret hvis det ikke kan skrives som en elementær tensor, altså på formen. Et EPR par er et 2-qubit system på formen $\psi = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$. Man kan se at dette systemet er sammenfiltret, ettersom de to elementære tensorene ikke har noen felles faktorer. Hvis vi derimot måler den første qubiten i systemet vil vi ende opp med at det er en $(\frac{1}{\sqrt{2}})^2 = 50\%$ sjanse for å måle $0$ og $50\%$ sjanse for å måle $1$. Hvis vi derimot har målt $0$ på den første qubiten, så vil systemet kollapse til $\psi = |00\rangle$, og vi vet dermed at den andre qubiten må være i tilstand $|0\rangle$. \todo[color=yellow]{Legg til mer formalitet og kom med flere eksempler etterpå?}
+        EPR paret (Einstein, Rosen og Podolsky) er et klassisk eksempel på sammenfiltring. Man kan se at et system av qubits er sammenfiltret hvis det ikke kan skrives som en elementær tensor, $a\otimes b$. Et EPR par er et 2-qubit system på formen $\psi = \frac{1}{\sqrt{2}}|00\rangle + \frac{1}{\sqrt{2}}|11\rangle$. Man kan se at dette systemet er sammenfiltret, ettersom de to elementære tensorene ikke har noen felles faktorer. Hvis vi derimot måler den første qubiten i systemet vil vi ende opp med at det er en $(\frac{1}{\sqrt{2}})^2 = 50\%$ sjanse for å måle $0$ og $50\%$ sjanse for å måle $1$. Hvis vi derimot har målt $0$ på den første qubiten, så vil systemet kollapse til $\psi = |00\rangle$, og vi vet dermed at den andre qubiten må være i tilstand $|0\rangle$.
 
-\subsection{Kvantealgoritmer og orakler}
+        På samme måte som at klassiske bits kan manipuleres med kretser, kan man manipulere qubits med kvantekretser. En kvantekrets er et flytdiagram med et register, en arbeidsplass, logiske kvanteporter og målinger. Registeret er inputtet av qubits, arbeidsplassen er tilleggs qubits som man kan bruke til å utføre/definere operasjoner. Se figur \ref{fig:EPR} for et eksempel av en krets. I motsetning til klassiske kretser kan ikke kvantekretser ødelegge qubits, og alle prosessene må være unitære og reversible. Alle logiske kvanteporter er derfor unitære transformasjoner. Målinger følger ikke disse reglene, og disse er gitt ved hermitiske operatorer. Bemerk at en måling gjør om en qubit om til en klassisk bit.
 
-        En klassisk algoritme kan sees på å være en metode som løser et problem basert på et input av bits. Ofte representerer disse bitsa andre datastrukturer som tall, grafer eller flytnettverk. En kvantealgoritme kan dermed sees på å være en metode som løser et problem basert på et input av qubits. I mange tilfeller vil dette inputtet være operasjoner på et kvantesystem. Selve algoritmen er en komposisjon av unitære operatorer og målinger som opererer på en tilstand $\psi$ i $\partial D(\mathcal{H})$. 
-        
-        Kvantekretser kan brukes til å representere kvantealgoritmer. Disse kretsene består av registre, arbeidsplass, logiske kvanteporter og målinger. Registeret er de qubitsene som man har som input i programmet og arbeidsplassen er ekstra qubits som man kan bruke for å gjøre operasjoner på registeret med. En logisk kvanteport er en port som utfører en unitær operasjon på en eller flere qubits. En måling måler en egenverdi til kvantesystemet og kollapser gir tilstanden som en bit. Disse elementene komponerer man i et flytdiagram for å danne en kvantekrets. Her er et eksempel på en slik krets\todo[color=magenta]{Bilde av kvantekrets her}
+        \begin{figure}
+            \caption{EPR-sammenfiltrings kvantekrets}
+            \begin{center}
+                \begin{quantikz}
+                    \lstick{$\ket{0}$} & \gate{H} & \octrl{1} & \qw \\
+                    \lstick{$\ket{0}$} & \qw & \targ{} & \qw
+                \end{quantikz}
+            \end{center}
+            \begin{center}
+                H boksen viser til at man bruker Hadamard operatoren,\\ mens sirkelen kontrollerer en X operator som er $\oplus$.
+            \end{center}
+            \label{fig:EPR}
+        \end{figure}
 
-        De simpleste logiske kvanteportene som vi har er de som operer på 1 qubit, dette er de unitære matrisene over $\mathbb{C}^2$. Av de mest kjente så har vi matrisene:
+        De elementære logiske kvanteportene er unære, binære og trinære unitære operatorer over $\mathbb{C}^2$. De unære operatorene er kjent som Pauli matrisene $I, X, Y, Z$, sammen med Hadamard operatoren $H$ og fase skift operatoren $R_\theta$. Man kan observere at $X$ operatoren flipper qubiten, Z operatoren snur fasen hvis argumentet var $|1\rangle$ og $Y$ operatoren er en kombinasjon av $X$ og $Z$ ganget med skalaren $i$. 
         \begin{center}
             \begin{math}
                 I = \begin{pmatrix}
@@ -67,15 +77,18 @@
                     0 & -i \\ i & 0
                 \end{pmatrix},\ Z = \begin{pmatrix}
                     1 & 0 \\ 0 & -1
-                \end{pmatrix},\ R_\theta = \begin{pmatrix}
-                    1 & 0 \\ 0 & e^{i\theta}
-                \end{pmatrix} og\ H = \frac{1}{\sqrt{2}}\begin{pmatrix}
+                \end{pmatrix}
+            \end{math},\\
+            \begin{math}
+                H = \frac{1}{\sqrt{2}}\begin{pmatrix}
                     1 & 1 \\ 1 & 1
+                \end{pmatrix} og\ 
+                R_\theta = \begin{pmatrix}
+                    1 & 0 \\ 0 & e^{i\theta}
                 \end{pmatrix}
             \end{math}
         \end{center}
-
-        $I$, $X$, $Y$ og $Z$ matrisene kalles for Pauli matriser, $R_\theta$ kalles for en phaseskift matrise og $H$ kalles for Hadamard matrisen. To andre viktige porter er CNOT og SWAP, som operer på 2-qubits. CNOT, også kalt for "controlled not" operer på 2-qubits ved å anvende $X$ matrisen på den andre qubiten i registeret hvis den første qubiten har verdi 1. SWAP bytter om på rekkefølgen til qubitene.
+        Den elementære binære operatoren kalles controlled not og skrives CNOT. CNOT fliper qubiten til det andre argumentet hvis den første qubiten er $|1\rangle$. SWAP porten er en binær port som bytter om rekkefølgen på argumentene.
         \begin{center}
             \begin{math}
                 CNOT = \begin{pmatrix}
@@ -90,7 +103,31 @@
                     0 & 0 & 0 & 1
                 \end{pmatrix}
             \end{math}
-        \end{center}\todo[color = magenta]{Tegn kretser av hvordan disse virker}
+        \end{center}
+        Den trinære porten som er av stor interesse er Toffoli porten. Toffoli porten kalles også CCNOT, ettersom det er en dobbel kontrollert not. Hvis de to første argumentene har verdien $|1\rangle$ så flippes qubiten i det tredje argumentet.
+        \begin{center}
+            \begin{math}
+                Toffoli = \begin{pmatrix}
+                    1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                    0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+                    0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+                    0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
+                    0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
+                    0 & 0 & 0 & 0 & 0 & 0 & 1 & 0
+                \end{pmatrix}
+            \end{math}
+        \end{center}
+        Disse portene er universelle i den forstand av at alle andre logiske kvanteporter kan uttrykkes som en komposisjon av disse portene. Vi har i tillegg at Hadamard porten og Toffoli porten kan konstruere alle porter med reelle innlegg, som beskrevet av \cite{dewolf2021quantum}.
+
+        Som sagt tidligere er CNOT og Toffoli portene kontrollerte porter. 
+
+\subsection{Kvantealgoritmer og orakler}
+
+        En klassisk algoritme kan sees på å være en metode som løser et problem basert på et input av bits. Ofte representerer disse bitsa andre datastrukturer som tall, grafer eller flytnettverk. En kvantealgoritme kan dermed sees på å være en metode som løser et problem basert på et input av qubits. I mange tilfeller vil dette inputtet være operasjoner på et kvantesystem. Selve algoritmen er en komposisjon av unitære operatorer og målinger som opererer på en tilstand $\psi$ i $\partial D(\mathcal{H})$. 
+        
+        {Tegn kretser av hvordan disse virker}
         \todo[color=yellow]{Universalitet av kvante kretser?}
 
         Skriv noe om merkeorakel og faseorakel. Hvorfor trenger vi de, og hva brukes de til? Hva er problemet når det kommer til orakler?

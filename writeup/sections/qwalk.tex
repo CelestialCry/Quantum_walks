@@ -2,7 +2,7 @@
 
 \subsection{Grover's algoritme og metoden av amplitude amplifikasjon}
 
-    Grover's algoritme løser et veldig spesifikt problem, men teknikken som den bruker for å løse problemet er veldig interessant å studere. Problemet går som følger: Tenk at man er gitt en bistring med $N=2^n$ bits, hvor $t$ bits er satt til 1. Finn minst 1 bit som har verdi 1. Dette problemet kan åpenbart løses i "worstcase"\ lineær tid med konstant minne ved å randomisert iterere gjennom alle bitene og sjekke om de er 1 eller 0. Om den er 1 kan man terminere programmet, og returnere den posisjon som ga 1. Grover's algoritme har en kvadratisk hastighetsøkning ved å manipulere superposisjoner av qubits.
+    Grover's algoritme løser et veldig spesifikt problem, men teknikken som den bruker for å løse problemet er veldig interessant å studere. Problemet går som følger: Tenk at man er gitt en bistring med $N=2^n$ bits, hvor $t$ bits er satt til 1. Finn minst 1 bit som har verdi 1. Dette problemet kan åpenbart løses i "worstcase"\ lineær tid med konstant minne ved å randomisert iterere gjennom alle bitene og sjekke om de er 1 eller 0. Om den er 1 kan man terminere programmet, og returnere den posisjon som ga 1. Grover's algoritme har en kvadratisk hastighetsøkning på dette problemet, og man kan dermed løse det i worst case kvadratisk tid.
 
     For å beskrive problemet med et fysisk kvantesystem trenger vi å oversette problemet først. La $(b_k)_N$ være bitstringen med lengde N, definer så orakelet $\mathcal{O}_{(b_k)_N}:\mathbb{C}^{2^n} \otimes \mathbb{C}^2 \rightarrow \mathbb{C}^{2^n} \otimes \mathbb{C}^2$ til å merke målbiten hvis registerbiten var en løsning. Dette vil si at hvis $\mathcal{O}_{(b_k)_N}(|r\rangle\otimes |0\rangle) = |r\rangle\otimes |1\rangle$ så følger det at $b_r = 1$. For å fullføre Grover's algoritme trenger man matrisen $R$ som flipper fortegnet til registeret hvis den ikke er tilstanden $|0\rangle^{\otimes n}$.
     \begin{center}
@@ -12,6 +12,7 @@
                 0 & -1 & ... \\
                 \vdots & \vdots & \ddots
             \end{pmatrix}
+            %= 2|0\rangle\langle 0| - I
         \end{math}
     \end{center}
 
@@ -20,7 +21,7 @@
         \mathcal{G}=H^{\otimes n}RH^{\otimes n}\mathcal{O}_{(b_k)_N, \pm}.
     \end{align*}
     
-    Gorver's algoritme er definert som $G = M\mathcal{G}^k\circ H^{\otimes n}$, hvor $M$ er en projektiv måling, og $k$ er en konstant. Man skal da kunne fastslå med en høy sannsynlighet at målingen gir deg posisjonen til en bit i $(b_k)_N$ som er $1$. For å finne denne $k$-en som man bruker for å kjøre algoritmen trenger vi å se på metoden av amplitude amplifikasjon.
+    Gorver's algoritme er komposisjonen av operatorene $G = M\mathcal{G}^k\circ H^{\otimes n}$, hvor $M$ er en projektiv måling, og $k$ er en konstant. Man skal da kunne fastslå med en høy sannsynlighet at målingen gir deg posisjonen til en bit i $(b_k)_N$ som er $1$. For å finne denne $k$-en som man bruker for å kjøre algoritmen trenger vi å se på metoden av amplitude amplifikasjon.
 
     Definer tre tilstander hvor $t$ er antall $1$-ere i $(b_r)_N$ 
     \begin{align*}
@@ -28,14 +29,56 @@
         G & = \frac{1}{\sqrt{t}}\Sigma_{|r\rangle \mid b_r = 1}|r\rangle\\ 
         B & = \frac{1}{\sqrt{N-t}}\Sigma_{|r\rangle\mid b_r = 0}|r\rangle
     \end{align*}. 
+
+    \begin{figure}
+        \caption{Grover's algoritme}
+        \begin{center}
+            \begin{subfigure}[b]{0.46\textwidth}
+                \begin{tikzpicture}[scale=2]
+                    \draw[step=.5,gray,very thin] (-1.3,-1.3) grid (1.3,1.3);
+                    \draw[gray, thick] (0,0) circle (1);
+                    \draw[gray, thick] (1.3, 0) -- (-1.3, 0);
+                    \draw[gray, thick] (0, 1.3) -- (0, -1.3);
+                    \draw[ForestGreen, thick, ->] (0,0) -- (0, 1) node[above=2pt, fill=white] {G};
+                    \draw[Cerulean!80!White, thick] (0.3, 0) arc (0:30:0.3) node[right=2pt] {$\theta$};
+                    \fill[Cerulean!20!White] (0,0) -- (0.3, 0) arc (0:30:0.3) -- (0,0);
+                    \draw[Red, thick, ->] (0,0) -- (1,0) node[right=2pt, fill=white] {B};
+                    \draw[Cerulean, thick, ->] (0,0) -- (0.85,0.52) node[right=3pt, fill=white] {u};
+                \end{tikzpicture}
+                \caption{Initiell tilstand}
+                \label{fig:Grover init}
+            \end{subfigure}
+            \begin{subfigure}[b]{0.46\textwidth}
+                \begin{tikzpicture}[scale=2]
+                    \draw[step=.5,gray,very thin] (-1.3,-1.3) grid (1.3,1.3);
+                    \draw[gray, thick] (0,0) circle (1);
+                    \draw[gray, thick] (1.3, 0) -- (-1.3, 0);
+                    \draw[gray, thick] (0, 1.3) -- (0, -1.3);
+                    \fill[BurntOrange!20!White] (0,0) -- (0.3, 0) arc (0:60:0.3) -- (0,0);
+                    \fill[Cerulean!20!White] (0,0) -- (0.3, 0) arc (0:30:0.3) -- (0,0);
+                    \fill[OrangeRed!20!White] (0,0) -- (0.3, 0) arc (0:-30:0.3) -- (0,0);
+                    \draw[BurntOrange!80!White, thick] (0.3, 0) arc (0:60:0.3) node[right=0pt] {$\theta$};
+                    \draw[Cerulean!80!White, thick] (0.3, 0) arc (0:30:0.3) node[right=2pt] {$\theta$};
+                    \draw[OrangeRed!80!White, thick] (0.3, 0) arc (0:-30:0.3) node[right=2pt] {$\theta$};
+                    \draw[Cerulean, thick, ->] (0,0) -- (0.85,0.52) node[right=3pt, fill=white] {u};
+                    \draw[BurntOrange, thick, ->] (0,0) -- (0.45,0.9) node[above=3.2pt, fill=white] {$\mathcal{G}(u)$};
+                    \draw[OrangeRed, thick, ->] (0,0) -- (0.85,-0.52) node[below=3pt, fill=white] {$\mathcal{O}_{(b_k)_N,\pm}(u)$};
+                    \draw[ForestGreen, thick, ->] (0,0) -- (0, 1) node[above=2pt, fill=white] {G};
+                    \draw[Red, thick, ->] (0,0) -- (1,0) node[right=2pt, fill=white] {B};
+                \end{tikzpicture}
+                \caption{En Grover iteration}
+                \label{fig:Grover en}
+            \end{subfigure}
+        \end{center}
+    \end{figure}
     
-    Man kan se at $G$ (Good) og $B$ (Bad) vektorene er ortogonale, ettersom det er en sum av ortogonale vektorerer. I det 2 dimensjonale underrommet av $\mathbb{C}^{2^n}$ utspent av $G$ og $B$, finner man vektoren $u$.
+    Man kan se at $G$ (Good) og $B$ (Bad) vektorene er ortogonale, ettersom de er en sum av ortogonale vektorerer. I det 2 dimensjonale underrommet av $\mathbb{C}^{2^n}$ utspent av $G$ og $B$, finner man vektoren $u$.
     \begin{align*}
         u & = \frac{1}{\sqrt{N}}\Sigma_{|r\rangle}|r\rangle = \frac{\sqrt{t}}{\sqrt{N}}G + \frac{\sqrt{N-t}}{\sqrt{N}}B \\
         & = \sin\circ\arcsin(\frac{\sqrt{t}}{\sqrt{N}})G+\cos\circ\arcsin(\frac{\sqrt{t}}{\sqrt{N}})B \\
         & = \sin(\theta)G+\cos(\theta)B
     \end{align*}
-    Her er $\theta = \arcsin(\frac{\sqrt{t}}{\sqrt{N}})$. Metoden av amplitude amplifikasjon manipulerer tilstanden til $u$ i underrommet utspent av $G$ og $B$, hvor målet er å maksimere $\sin(\theta)$ ved å bruke unitære operasjoner. I tilfellet av Grover's algoritme gjør man enkle manipulasjoner av $u$ i dette underrommet. La $\alpha:\mathbb{R}$ være en vinkel og $T = \sin(\alpha)G+\cos(\alpha)B$ være en tilstand. For å se hva orakelet gjør med $T$ kan vi se på hva den gjør med $G$ og $B$. 
+    Her er $\theta = \arcsin(\frac{\sqrt{t}}{\sqrt{N}})$. Vi ønsker nå å manipulere tilstanden til $u$ i underrommet utspent av $G$ og $B$ for å maksimere $\sin(\theta)$. Dette vil maksimere sannsynligheten for at algoritmen avslutter i en tilstand hvor man har maksimal sjanse for å måle en qubit som er merket. La $\alpha:\mathbb{R}$ være en vinkel og $T = \sin(\alpha)G+\cos(\alpha)B$ være en tilstand. For å se hva orakelet gjør med $T$ kan vi se på hva den gjør med $G$ og $B$. 
     \begin{align*}
         & \mathcal{O}_{(b_k)_N, \pm}(B) = B \\
         & \mathcal{O}_{(b_k)_N, \pm}(G) = -G \\
@@ -53,7 +96,7 @@
         & = 2H^{\otimes n}|0\rangle^{\otimes n}\langle0|^{\otimes n}H^{\otimes n} - H^{\otimes n}H^{\otimes n} \\ 
         & = 2uu^* - I
     \end{align*}
-    Dette gjør at vi kan observere hva tilstanden til T er etter å anvende denne operatoren, og det blir åpenbart hva $k$ Grover's iterates gjør.
+    En Grover's iterate kan derfor også bli betegnet som $\mathcal{G}=(2uu^*-I)\mathcal{O}_{(b_k)_N,\pm}$. Dette gjør at vi kan observere hva tilstanden til T er etter å anvende $H^{\otimes n}RH^{\otimes n}$ operatoren, og vi kan se hva Grover's iterate $k$ ganger gjør.
     \begin{align*}
         & H^{\otimes n}RH^{\otimes n}(T)=\sin(-\alpha + 2\theta)G+\cos(-\alpha + 2\theta)B \\
         \implies & \mathcal{G}^k(T)=\sin(\alpha+2k\theta)G+\cos(\alpha+2k\theta)B
@@ -69,7 +112,16 @@
         \implies & k \approx \frac{\pi}{4\theta} - \frac{1}{2}=\lfloor\sfrac{\pi}{4\arcsin(\sqrt{\frac{t}{N}})}\rfloor.
     \end{align*}
 
+    Denne verdien av $k$ vil gi sannsynligheten for å treffe et merket element 
+    \begin{align*}
+        p = \sin((1+2k)\theta) = \sin((1+\lfloor\sfrac{\pi}{2\arcsin(\sqrt{\frac{t}{N}})}\rfloor)\arcsin(\sqrt{\frac{t}{N}}))
+    \end{align*}
+
     \todo[color = yellow]{Legg til eksempler og figurer}
+
+    \subsubsection*{Sannsynlighet amplifikasjon og Amplitude amplifikasjon}
+
+
         
 \subsection{Kvantevandringer basert på kvantemyntkast}
 
@@ -99,7 +151,7 @@
 
         Vi illustrer denne metoden med et eksempel: \todo[color = yellow]{Lag eksempel her}
 
-    \subsubsection*{Rette linjer, Gittere og Hyperkuber} % Kanskje? Analyse
+    % \subsubsection*{Rette linjer, Gittere og Hyperkuber} % Kanskje? Analyse
 
     \subsection*{Rettede grafer}
 
@@ -113,11 +165,25 @@
         \end{align*}
         Vi trenger nå å definere en mynt på hvert av disse underrommene, og dermed direktesumme de sammen. Vi definerer mynten $C = \bigoplus_{v:V}C_v:\mathcal{H}\rightarrow\mathcal{H}$, hvor $C_v$ er definert på hvert underrom. Med andre ord er $C$ en blokkdiagonal matrise, hvor hver blokk tilsvarer en mynt.
 
-        Vi illustrer dette med et eksempel.
+        Et kvantesteg med \emph{arc notation} algoritmen ser ut som $U = SC = S\bigoplus_{v:V}C_v$. Vi illustrer dette med et eksempel.
+
+    \subsubsection*{Kvantemynter}
+
+\subsection{Umyntede kvantevandringer}
 
     \subsubsection*{Staggered model} %Forskjøvet model
 
-        Den første umyntede metoden som vi skal se på er den forskyvede metoden. 
+        Den første umyntede metoden som vi skal se på er den forskyvede metoden. Denne metoden baserer seg på å  finne graf tesselleringer og en graf tesselleringsdekke. En graftessellering er en oppdeling av en graf inn i dens cliquer. En clique kalles også for et polygon, en kant er med i graftesselleringen hvis det er en kant i polygonet. En graf tesselleringsdekke er en samling av graf tesselleringer slik at alle kantene i grafen er dekket. Dette vil si at unionen av alle tesseleringene er den originale grafen.
+
+        \todo[color = yellow]{Kom med et eksempel på en graf tessellering her}
+
+        Valget av en graf tesselleringsdekke vil bestemme hvordan kvantestegsoperatoren vil se ut. For enhver graf tessellering $\mathcal{T}$ assosierer vi en operator $H_{\mathcal{T}}$. For hvert polygon $\alpha:\mathcal{T}$ assosierer vi en vektor $\vec{\alpha}=\sfrac{1}{\sqrt{|\alpha|}}\Sigma_{v:\alpha}|v\rangle$. Vi definerer operatoren $H_\mathcal{T}$ og $U$ som under. Her skal tensorproduktet tolkes som funksjonskomposisjon.
+        \begin{align*}
+            H_\mathcal{T} & =2\Sigma_{\alpha:\mathcal{T}}\langle\_\ ,\alpha\rangle\alpha - I \\
+            U & = \bigotimes_{\mathcal{T}:Cover}H_\mathcal{T}
+        \end{align*}
+
+        Vi illustrer hvordan vandringen virker med den samme grafen.
 
     \subsubsection*{Szegedy vandring}
 

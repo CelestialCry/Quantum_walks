@@ -121,13 +121,72 @@
         \end{center}
         Disse portene er universelle i den forstand av at alle andre logiske kvanteporter kan uttrykkes som en komposisjon av disse portene. Vi har i tillegg at Hadamard porten og Toffoli porten kan konstruere alle porter med reelle innlegg, som beskrevet av \cite{dewolf2021quantum}.
 
-        Som sagt tidligere er CNOT og Toffoli portene kontrollerte porter. 
+        \begin{figure}
+            \caption{Kontrollerte kvanteporter}
+            \begin{center}
+                \begin{subfigure}{0.22\textwidth}
+                    \begin{center}
+                        \begin{quantikz}
+                            \lstick{$\ket{0}$} & \octrl{1} & \qw \\
+                            \lstick{$\ket{0}$} & \targ{} & \qw
+                        \end{quantikz}
+                        \subcaption{CNOT}
+                    \end{center}
+                    \label{fig:CNOT}
+                \end{subfigure}
+                \begin{subfigure}{0.22\textwidth}
+                    \begin{center}
+                        \begin{quantikz}
+                            \lstick{$\ket{0}$} & \octrl{1} & \qw \\
+                            \lstick{$\ket{0}$} & \octrl{1} & \qw \\
+                            \lstick{$\ket{0}$} & \targ{} & \qw 
+                        \end{quantikz}
+                        \subcaption{Toffoli}
+                    \end{center}
+                    \label{fig:Toffoli}
+                \end{subfigure}
+                \begin{subfigure}{0.28\textwidth}
+                    \begin{center}
+                        \begin{quantikz}
+                            \lstick{$\ket{0}$} & \octrl{1} & \qw \\
+                            \lstick{$\ket{0}$} & \gate{H} & \qw
+                        \end{quantikz}
+                        \subcaption{Kontrollert Hadamard}
+                    \end{center}
+                    \label{fig:Kontrollert H}
+                \end{subfigure}
+            \end{center}
+            \label{fig:Kontrollerte porter}
+        \end{figure}
+        
+        Som sagt tidligere er CNOT og Toffoli portene kontrollerte porter. En kontrollert port er en port som kun blir aktivert, gitt at tilstanden til en annen qubit tilfredstiller en betingelse. CNOT er kontrollert i den forstanden at man kun anvender $X$ operatoren hvis den første qubiten er i tilstanden $\ket{1}$. Toffoli porten er et eksempel på en port som er multikontrollert. Alle logiske kvanteporter kan kontrolleres av andre qubits. Se figur \ref{fig:Kontrollerte porter} for eksempler.
 
 \subsection{Kvantealgoritmer og orakler}
 
-        En klassisk algoritme kan sees på å være en metode som løser et problem basert på et input av bits. Ofte representerer disse bitsa andre datastrukturer som tall, grafer eller flytnettverk. En kvantealgoritme kan dermed sees på å være en metode som løser et problem basert på et input av qubits. I mange tilfeller vil dette inputtet være operasjoner på et kvantesystem. Selve algoritmen er en komposisjon av unitære operatorer og målinger som opererer på en tilstand $\psi$ i $\partial D(\mathcal{H})$. 
+        Klassiske algoritmer er metoder som løser problemer basert på input av bits, kvantealgoritmer kan dermed ses på som metoder som løser problemer basert på qubits. Bits brukes for å representere datastrukturer som tall, lister og grafer. Qubits kan brukes for å representere de samme strukturene. Kvantekretser blir dermed den naturlige måten for å representere algoritmene, en kvantealgoritme er dermed en komposisjon av unitære operatorer og målinger på en tilstand $\psi$ i $\partial D(\mathcal{H})$. 
         
-        {Tegn kretser av hvordan disse virker}
-        \todo[color=yellow]{Universalitet av kvante kretser?}
+        Kvanteparallellisme er en egenskap kvantealgoritmer får fra kvantemekanikken. Dette fenomenet er beskrevet som at en beregning kan inneholde informasjonen fra flere. For å se dette ser vi på en funksjon $f:nBits\rightarrow 1Bits$ og vi antar at det finnes en unitær operator $\mathcal{O}_f$ slik at $\mathcal{O}_f(\ket{z}\ket{0})=\ket{z}\ket{0}$. Ved å anvende $\mathcal{O}_f$ på en tilstand som er i en superposisjon av alle baisiselementene får man følgende:
+        \begin{align*}
+            \mathcal{O}_f(\Sigma_{z=0}^n\ket{z}\ket{0}) = \Sigma_{z=0}^n\ket{z}\ket{f(z)}.
+        \end{align*}
+        Man kan se at $\mathcal{O}_f$ har kun blitt anvendt en gang, men informasjon om alle evalueringene er i den nye tilstanden. Når man måler tilstanden i standard basisen vil den kollapse til en av evalueringene, så klassisk er ikke Kvanteparallellisme noe bedre, men interferens og sammenfiltring kan gi effekter som gir bedre utslag enn med klassiske algoritmer.
 
-        Skriv noe om merkeorakel og faseorakel. Hvorfor trenger vi de, og hva brukes de til? Hva er problemet når det kommer til orakler?
+        Nesten alle kvantealgoritmer bruker en slags \emph{query}. Disse kommer som oftest i form som en evaluering av en klassisk funksjon. Den unitære operatoren ovenfor er et eksempel på en slik \emph{query}. De operatorene som utfører \emph{queries} kalles for orakler eller black-boxes. En unitær operator $\mathcal{O}:\mathcal{H}\otimes\mathcal{H}'\rightarrow\mathcal{H}\otimes\mathcal{H}'$ som gjør en \emph{query} på rommet $\mathcal{H}$ og merker tilstandene i $\mathcal{H}'$ basert på utfallet kalles for et merkeorakel. Operatoren $\mathcal{O}_f$ som definert over er et eksempel på et merkeorakel. En annen klasse med orakler er faseorakler, disse er operatorer på formen $\mathcal{O}_\pm:\mathcal{H}\rightarrow\mathcal{H}$, disse gjør en \emph{query} på rommet $\mathcal{H}$ og endrer fasen basert på utfallet.
+
+        I tilfellet med merkeorakelet $\mathcal{O}_f$, så finnes det en metode for å gjøre det om til et faseorakel $\mathcal{O}_{f,\pm}$. Bemerk først at merkeorakelet er definert som $\mathcal{O}_f(\ket{z}\ket{w})=\ket{z}\ket{w\oplus f(z)}$ på basisen. Vi kan definere $\mathcal{O}_{f,\pm}$ som følgende:
+        \begin{align*}
+            & \mathcal{O}_f(\ket{z}\otimes H\ket{1}) = (-1)^{f(z)}\ket{z}\otimes H\ket{1} \\
+            \implies & \mathcal{O}_{f,\pm}(\ket{z}) = (-1)^{f(z)}\ket{z} 
+        \end{align*}
+        Figur \ref{fig:faseorakel} beskriver hvordan denne konstruksjonen ser ut som med kvantekretser.
+
+        \begin{figure}
+            \caption{Standardkonstruksjon av faseorakel}
+            \begin{center}
+                \begin{quantikz}
+                    \lstick{$\ket{z}$} & \qw\gategroup[wires=2, steps=9, style={dashed, rounded corners, fill=Blue!5, inner xsep=2pt}, background]{$O_{f,\pm}$} & \qw & \qw & \qw & \gate[2]{O_f} & \qw & \qw & \qw & \qw & \qw \rstick{$(-1)^{f(z)}\ket{z}$}\\
+                    & & \lstick{$\ket{0}$} & \gate{X} & \gate{H} & & \gate{H} & \gate{X} & \qw \rstick{$\ket{0}$} &
+                \end{quantikz}
+            \end{center}
+            \label{fig:faseorakel}
+        \end{figure}

@@ -616,11 +616,42 @@
 
         Vi kan regne ut hva $U$ vil være.
 
-        Merk at rekkefølgen vi komponerer operatorene våre har ikke noe å si. Ved å anvende en permutering på graf tesselleringsdekket ender vi opp med en ny graf tesselleringsdekket. Vi kan i tillegg vekte hvor mye hver hermitiske operator skal bidra til vandringen. Gitt at vi har en permutasjon $\sigma$ på graf tesselleringsdekket kan vi definere $U$ som under.
+        Merk at rekkefølgen vi komponerer operatorene våre har ikke noe å si. Ved å anvende en permutering på graf tesselleringsdekket ender vi opp med en ny graf tesselleringsdekket, dette gjør at alle permutasjoner gir opphav til en ny gyldig kvantevandring. Vi kan i tillegg vekte hvor mye hver hermitiske operator skal bidra til vandringen. Gitt at vi har en permutasjon $\sigma$ på graf tesselleringsdekket kan vi definere $U$ som under.
         \begin{align*}
             U=\Pi_{n=1}^ke^{i\theta H_{\mathcal{T}_{\sigma(n)}}}=\Pi_{n=1}^k(\cos(\theta)I+i\sin(\theta)H_{\mathcal{T}_{\sigma(n)}})
         \end{align*}
+        En forskyvet metode basert på en tesselleringsdekke med størrelse $k$ kalles for en $k$-tessellerbar kvantevandring.
 
     \subsubsection*{Szegedy vandring}
+        
+        Denne kan jeg ikke så godt...
 
 \subsection{Kvantesøk}
+
+        En anvendelse av kvantevandringer er klassen av algoritmer kalt \emph{Quantum spatial search} (QSS). Disse algoritmene har blitt detaljert beskrevet av Portugal \cite{portugal_2019} og Tulsi \cite{PhysRevA.86.042331}. QSS algoritmene bruker en vandrer for å finne en merket node i en database eller graf.
+
+        Vi vil beskrive en QSS algoritme som søker gjennom en graf hvor nøyaktig en node er merket. Anta at $G=(V,E)$ er en graf og at det finnes en kvantestegsoperator $U:\mathcal{H}\rightarrow\mathcal{H}$. La $\psi:\mathcal{H}$ være den merkede noden. Siden vi antar at grafen $G$ er endelig følger det at $\mathcal{H}$ er endelig dimensjonal og det finnes en ortonormal basis $\{\psi_1, \psi_2, ..., \psi_n\}$, hvor $\psi=\psi_1$. Vi definerer deretter operatoren $R$ på følgende vis:
+        \begin{align*}
+            R & :\mathcal{H}\rightarrow\mathcal{H} \\
+            & \psi_1 \mapsto -\psi_1 \\
+            &\psi_k \mapsto \psi_k
+        \end{align*}
+        En kvantevandringsbasert QSS operator $S=UR$, denne kaller vi også for den modifiserte kvantestegsoperatoren. En generell QSS operator $S=DR$ trenger å tilfredstille at den initielle tilstanden $s$ overlapper med den merkede noden $\psi_1$, aka $\langle s,\psi_1\rangle\neq 0$. Vi krever også at $s$ er en egenvektor til $D$. I dette rammeverket kan vi se at $D=2uu*-I$, gir Grover's algoritme. \todo{Føler det kan være greit å ha noen ting om at Grover's algoritme er optimal elns} Ettersom den kvantevandringsbaserte algoritmen har noe enklere form velger vi å fokusere på den.
+        
+        Et kvantesøk over grafen $G$ vil være en operator på formen $\mathcal{S} = MS^tP$, her er $M$ en måling av tilstanden i basisen til nodene, $t$ er antallet ganger det modifiserte kvantesteget skal kjøre, og $P$ er en operator som sender $\ket{0}$ til den initielle tilstanden. La $s = P(\ket{0})$ være den initielle tilstanden, og $p(t)$ sjansen for å måle $\psi_1$. For å finne ut hvilken $t$ vi burde bruke ønsker vi å maksimere $p(t)$.
+        \begin{align*}
+            p(t) = |\langle\psi_1|S\ket{s}|^2 
+        \end{align*}
+
+        For alle praktiske anvendelser er det best å tilnærme en $t$ ved å bruke numeriske metoder for å maksimere $t$. Gitt noen flere betingelser kan man bruke resultatene til Tulsi og Portugal for å estimere en $t$. For dette er det tilstrekkelig å vite spektraldekomposisjonen til operatoren $U$. La egenvektorene til $U$ være $\vec{\phi_k}$, med egenverdiene $e^{i\phi_k}$. Med disse vektorene kan vi regne ut tre konstanter:
+        \begin{align*}
+            A & = 2\Sigma_{\phi_k=0}|\langle\psi_1|\vec{\phi_k}\rangle|^2 \\
+            B & = \Sigma_{\phi_k\neq 0}\frac{|\langle\psi_1|\vec{\phi_k}\rangle|^2\sin(\phi_k)}{1-\cos(\phi_k)} \\
+            C & = \Sigma_{\phi_k\neq 0}\frac{|\langle\psi_1|\vec{\phi_k}\rangle|^2}{1-\cos(\phi_k)}
+        \end{align*}
+
+        Gitt at $B=0$, kan man velge $\lambda = \sfrac{\sqrt{A}}{\sqrt{B}}$. Da kan man enkelt finne en optimal $t$. Hvis $U$ er en matrise som kun har reelle innlegg, så følger det at $B=0$.
+        \begin{align*}
+            t_{opt} & = \lfloor \sfrac{\pi}{2\lambda} \rfloor \\
+            p(t_{opt}) & = \frac{|\langle \psi_1|s\rangle|^2}{AC}\sin^2(\lambda t_{opt})
+        \end{align*}

@@ -19,7 +19,7 @@ namespace Walks {
         }
     }
 
-    // Oracle definitions goes here
+    // Oracle definitions
     
         // The identity Oracle, it does nothing!
         operation IdentityOracle(register : Qubit[], target : Qubit) : Unit
@@ -84,7 +84,7 @@ namespace Walks {
             }
         }
 
-        // An oracle which takes a 4-qubit input and checks if it is an answer to 0010001000000010
+        // An oracle which takes a 4-qubit input and checks if it is an answer to 0010001000000010 (2,6,14)
         operation ExampleOracle(register : Qubit[], target : Qubit) : Unit
         is Adj {
             Fact(Length(register) == 4, "This is not a valid input");
@@ -118,12 +118,17 @@ namespace Walks {
         }
 
         // Testing Grover on ExampleOracle
-        // @EntryPoint()
-        operation GroverTest() : Unit {
+        @EntryPoint()
+        operation GroverTest() : Int {
             use reg = Qubit[4];
-            GroversAlgorithm(reg, ExampleOracle, 3);
-            DumpMachine();
-            ResetAll(reg);
+            GroversAlgorithm(reg, ExampleOracle, 1);
+            mutable ans = 0;
+            for i in 0..3 {
+                if M(reg[i]) == One {
+                    set ans = ans + 1*2^i;
+                }
+            }
+            return ans;
         }
 
     // Coin definitions goes here
@@ -240,32 +245,31 @@ namespace Walks {
     }
 
     // Test av vandring på eksempel graf
-    @EntryPoint()
-    operation Test() : Unit {
+    // @EntryPoint()
+    operation Test() : Int {
         use pos = Qubit[3];
         use color = Qubit[2];
         let ExampleCoin = ApplyToEachCA(H, _);
         let phaseOracle = PhaseOracle(ExampleMark);
 
-        // ApplyToEachCA(H, pos + color);
+        // Initialiserer til en startposisjon som er uniformt fordelt
+        ApplyToEachCA(H, pos);
 
-        //
-        // Denne virker etter 4, 17 iterasjoner, og deretter har en ny lokal maks etter 41 iterasjoner, hvorfor?
-        // Jeg har kjørt den på nytt og på nytt og på nytt og fått forskjellige resultater hver gang, det er noe jeg gjør galt...
-        // Å måle fargene fikk bølgefunksjonen til å kollapse og noen tilstander forsvant.
-        for i in 1..2 {
+        // Denne virker etter 8 iterasjoner, hvorfor?
+        for i in 1..8 {
             phaseOracle(pos);
             ExampleCoin(color);
             ExampleFlipFlop(pos, color);
         }
 
-        DumpMachine();
-        // Bruker dette istedenfor DumpMachine(), ettersom det er lettere å se hva som foregår. Jeg burde lære meg hvordan man kaller på dette via python.
-        // let m = MultiM(pos);
-        // let s = Convert.ResultArrayAsInt(m);
-        // Message(Convert.IntAsString(s));
+        mutable ans = 0;
+        for i in 0..2 {
+            if M(pos[i]) == One {
+                set ans = ans + 1*2^i;
+            }
+        }
         ResetAll(color);
-        ResetAll(pos);
+        return ans;
     }
 }
 

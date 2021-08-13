@@ -19,6 +19,6 @@ namespace Walks
         public System.Collections.Generic.IEnumerable<System.CommandLine.Option> Options => new System.CommandLine.Option[] { };
         public QVoid CreateArgument(System.CommandLine.Parsing.ParseResult parseResult) => QVoid.Instance;
         public System.Threading.Tasks.Task<int> Submit(System.CommandLine.Parsing.ParseResult parseResult, Microsoft.Quantum.EntryPointDriver.AzureSettings settings) => Microsoft.Quantum.EntryPointDriver.Azure.Submit(global::Walks.GroverTest.Info, this.CreateArgument(parseResult), settings);
-        public System.Threading.Tasks.Task<int> Simulate(System.CommandLine.Parsing.ParseResult parseResult, Microsoft.Quantum.EntryPointDriver.DriverSettings settings, string simulator) => Microsoft.Quantum.EntryPointDriver.Simulation<global::Walks.GroverTest, QVoid, QVoid>.Simulate(this, this.CreateArgument(parseResult), settings, simulator);
+        public System.Threading.Tasks.Task<int> Simulate(System.CommandLine.Parsing.ParseResult parseResult, Microsoft.Quantum.EntryPointDriver.DriverSettings settings, string simulator) => Microsoft.Quantum.EntryPointDriver.Simulation<global::Walks.GroverTest, QVoid, Int64>.Simulate(this, this.CreateArgument(parseResult), settings, simulator);
     }
 }

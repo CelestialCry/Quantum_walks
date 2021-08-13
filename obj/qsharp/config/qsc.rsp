@@ -2,6 +2,7 @@
     "/home/thomas/Documents/Quantum_walks/Walks"
 --build-exe
 --input
+    "/home/thomas/Documents/Quantum_walks/Program-old2.qs"
     "/home/thomas/Documents/Quantum_walks/Program.qs"
 --output
     "/home/thomas/Documents/Quantum_walks/obj/qsharp/"

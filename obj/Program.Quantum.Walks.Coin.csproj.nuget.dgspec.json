@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/thomas/Documents/Quantum_walks/Program.Quantum.Walks.Coin.csproj": {}
+  },
+  "projects": {
+    "/home/thomas/Documents/Quantum_walks/Program.Quantum.Walks.Coin.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/thomas/Documents/Quantum_walks/Program.Quantum.Walks.Coin.csproj",
+        "projectName": "Program.Quantum.Walks.Coin",
+        "projectPath": "/home/thomas/Documents/Quantum_walks/Program.Quantum.Walks.Coin.csproj",
+        "packagesPath": "/home/thomas/.nuget/packages/",
+        "outputPath": "/home/thomas/Documents/Quantum_walks/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/thomas/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.Quantum.CSharpGeneration": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[0.18.2106148911, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Quantum.EntryPointDriver": {
+              "target": "Package",
+              "version": "[0.18.2106148911, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Quantum.QSharp.Core": {
+              "target": "Package",
+              "version": "[0.18.2106148911, )"
+            },
+            "Microsoft.Quantum.Runtime.Core": {
+              "target": "Package",
+              "version": "[0.18.2106148911, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Quantum.Simulators": {
+              "target": "Package",
+              "version": "[0.18.2106148911, )",
+              "autoReferenced": true
+            },
+            "Microsoft.Quantum.Standard": {
+              "target": "Package",
+              "version": "[0.18.2106148911, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.301/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

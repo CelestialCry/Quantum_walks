@@ -117,15 +117,15 @@
         p = \sin((1+2k)\theta) = \sin((1+\lfloor\sfrac{\pi}{2\arcsin(\sqrt{\frac{t}{N}})}\rfloor)\arcsin(\sqrt{\frac{t}{N}}))
     \end{align*}
 
-    \subsubsection*{Sannsynlighet amplifikasjon og Amplitude amplifikasjon}
+    \subsubsection{Sannsynlighet forsterkning og Amplitude forsterkning}
 
-        Metoden av sannsynlighet amplifikasjon opererer på klassen av klassiske Monte Carlo algoritmer. En Monte Carlo algoritme er definert ved at den alltid returnerer et svar etter en endelig forhåndsbestemt tidsbegrensing, men svaret kan være feil. La $p$ være sannsynligheten for at algoritmen returnerer det riktige svaret innen $O(f(n))$. Sannsynlighets amplifikasjons algoritmen virker ved å kjøre algoritmen flere ganger, og dermed øker sjansen for at det riktige svaret har blitt avgitt. Hvis vi kjører algoritmen $n$ ganger så er sjansen for at minst et riktig svar har blitt gitt $1-(1-p)^n$. Gitt at $p\ll n$, så er sannsynligheten tilnærmet $1-(1-p)^n\approx np$. Ved å kjøre algoritmen $\sfrac{1}{p}$ ganger vil være en god tilnærming for å maksimere sannsynligheten for at det riktige svaret har blitt avgitt med kjøretid $O(\sfrac{f(n)}{p})$.
+        Sannsynlighetsforsterkningsmetoden opererer på klassen av klassiske Monte Carlo algoritmer. En Monte Carlo algoritme er definert ved at den alltid returnerer et svar etter en endelig forhåndsbestemt tidsbegrensing, men svaret kan være feil. La $p$ være sannsynligheten for at algoritmen returnerer det riktige svaret innen $O(f(n))$. Sannsynlighetsforstningsmetoden virker ved å kjøre algoritmen flere ganger, og dermed øke sjansen for at det riktige svaret har blitt avgitt. Hvis vi kjører algoritmen $n$ ganger så er sjansen for at minst et riktig svar har blitt gitt $1-(1-p)^n$. Gitt at $p\ll n$, så er sannsynligheten tilnærmet $1-(1-p)^n\approx np$. Ved å kjøre algoritmen $\sfrac{1}{p}$ ganger vil være en god tilnærming for å maksimere sannsynligheten for at det riktige svaret har blitt avgitt med kjøretid $O(\sfrac{f(n)}{p})$.
         
-        Amplitude amplifikasjons algoritmen, bruker den samme ideen for å forbedre en kvantealgoritme, men ved å ikke bruke målinger så kan kjøretiden forbedres til $O(\sfrac{f(n)}{\sqrt{p}})$. Anta at det finnes en kvantealgoritme $A:\mathbb{C}nBits\rightarrow\mathbb{C}nBits$ som finner en tilstand som er merket. Funksjonen $f:nBits\rightarrow 1Bits$, bestemmer om et element er merket eller ikke. La $p$ være sannsynligheten for at $\psi = A\ket{n}$ er et merket element, hvor $\ket{n}$ er den beste initielle tilstanden til algoritmen $A$. Amplitude amplifikasjon virker ved å definere en ny operator
+        Amplitudeforsterkningsmetoden, bruker den samme ideen for å forbedre en kvantealgoritme, uten å bruke målinger. Kjøretiden forbedres til $O(\sfrac{f(n)}{\sqrt{p}})$. Anta at det finnes en kvantealgoritme $A:\mathbb{C}nBits\rightarrow\mathbb{C}nBits$ som finner en tilstand som er merket. Funksjonen $f:nBits\rightarrow 1Bits$, bestemmer om et element er merket eller ikke. La $p$ være sannsynligheten for at $\psi = A\ket{n}$ er et merket element, hvor $\ket{n}$ er den beste initielle tilstanden til algoritmen $A$. Amplitude forsterkning virker ved å definere en ny operator
         \begin{align*}
             U = (2\psi\cdot\psi^*-I)\mathcal{O}_{f,\pm}.
         \end{align*}
-        Her er $\mathcal{O}_{f,\pm}$ være faseoraklet definert utifra funksjonen $f$. Ved å kjøre operatoren $U$ $t=\lfloor\sfrac{\pi}{4\sqrt{p}}\rfloor$ ganger sannsynligheten mot $1$ for at utfallet av at algoritmen gir en merket bitstring. Analysen av denne algoritmen er nesten identisk som analysen av Grover's algoritme, for en fullstendig analyse referer jeg til \cite{portugal_2019}.
+        Her er $\mathcal{O}_{f,\pm}$ faseoraklet definert utifra funksjonen $f$. Ved å anvende operatoren $U$ på $\psi$ $t=\lfloor\sfrac{\pi}{4\sqrt{p}}\rfloor$ ganger, sender sannsynligheten mot $1$ for at utfallet av at algoritmen gir en merket bitstring. Analysen av denne algoritmen er nesten identisk som analysen av Grover's algoritme, for en fullstendig analyse se \cite{portugal_2019}.
 
 \subsection{Kvantevandringer basert på kvantemyntkast}
 
@@ -137,9 +137,9 @@
 
     For å illustrere hvordan kvantevandring kan virke, starter vi med å se på en klassisk tilfeldig vandring. Se for deg at det er en vandrer som vandrer gjennom en skog med forgreninger. Når vandreren møter på en forgrening kaster de en mynt for å velge hvilken retning de går. En slik vandring vil være et eksempel på en rettet tilfeldig vandring over et binærtre. Denne ideen kan man gjøre om til en kvante vandringsalgoritme ved at man gjør om vandreren til en kvantepartikkel, med en kvantemynt som kan være i superposisjon av 2 forskjellige tilstander. Partikkelen vandrer gjennom skogen avhengig av tilstanden til mynten, akkurat som den klassiske vandreren. Dette tillater partikkelen til å flytte seg gjennom skogen som en superposisjon av forskjellige muligheter. Det vil først være når vi måler partikkelen sin posisjon at vi vil få vite hvor den er, og hvilke utfall mynten har gitt.
 
-    For å være mer presis kan man tilegne to Hilbertrom til en slik kvantevandringsalgoritme. $\mathcal{H}_V$ representerer posisjonene til vandreren, og $\mathcal{H}_C$ representerer utfallene av kvantemyntkastet. Et kvantesteg defineres som komposisjonen av to operatorer $U=S(I\otimes C)$, en myntkast operator $C:\mathcal{H}_C\rightarrow\mathcal{H}_C$ som kaster mynten og en forflyttings operator (skift operater) $S:\mathcal{H}_V\otimes\mathcal{H}_C\rightarrow\mathcal{H}_V\otimes\mathcal{H}_C$ som leser av myntkastet og forflytter seg henholdsvis. En kvantevandring vil være en algoritme som $MU^kT$, hvor $M$ er en måling, $U$ er et kvantesteg og $T$ er en operator som setter systemet i starttilstanden. Dette er det som vi kaller for en myntbasert kvantevandringsalgoritme og er den formen for vandring som er standarisert i litteraturen.
+    For å være mer presis kan man tilegne to Hilbertrom til en slik kvantevandringsalgoritme. $\mathcal{H}_V$ representerer posisjonene til vandreren, og $\mathcal{H}_C$ representerer utfallene av kvantemyntkastet. Et kvantesteg defineres som komposisjonen av to operatorer $U=S(I\otimes C)$, en myntkast operator $C:\mathcal{H}_C\rightarrow\mathcal{H}_C$ som kaster mynten og en forflyttings operator (skift operater) $S:\mathcal{H}_V\otimes\mathcal{H}_C\rightarrow\mathcal{H}_V\otimes\mathcal{H}_C$ som leser av myntkastet og forflytter seg henholdsvis. En kvantevandring vil være en algoritme på formen $MU^kT$, hvor $M$ er en måling, $U$ er et kvantesteg og $T$ er en operator som setter systemet i starttilstanden. Dette er det som vi kaller for en myntbasert kvantevandringsalgoritme og er den formen for vandring som er standarisert i litteraturen.
 
-    \subsubsection*{$d$-regulære grafer}
+    \subsubsection{$d$-regulære grafer}
 
         Den første kvantevandringsmetoden som vi skal se på er vandring over $d$-regulære grafer, den kalles for \emph{position-coin notation}. For at denne metoden skal virke krever vi tillegg at det maksimale kantkromatiske tallet er det samme som $d$. Hvis man i tillegg ikke tillater at grafen har noen løkker vil spektraldekomposisjonen til algoritmen bli simplere.
 
@@ -171,7 +171,7 @@
                 \end{tikzpicture}
             \end{center}
             \begin{center}
-                \subcaption*{Fargepartisjon av grafen}
+                \caption*{Fargepartisjon av grafen}
                 \begin{tcolorbox}
                     \begin{subfigure}{0.2451065\textwidth}
                         \begin{tikzpicture}[thick, main/.style= {draw, circle}, scale=0.75]
@@ -191,7 +191,7 @@
                                 (7) --[color=red] (8);
                                 };
                         \end{tikzpicture}
-                        \subcaption{Rød = 0}
+                        \caption{Rød = 0}
                     \end{subfigure}
                     \begin{subfigure}{0.2451065\textwidth}
                         \begin{tikzpicture}[thick, main/.style= {draw, circle}, scale=0.75]
@@ -211,7 +211,7 @@
                                 (8) --[color=ProcessBlue] (1);
                                 };
                         \end{tikzpicture}
-                        \subcaption{Blå = 1}
+                        \caption{Blå = 1}
                     \end{subfigure}
                     \begin{subfigure}{0.2451065\textwidth}
                         \begin{tikzpicture}[thick, main/.style= {draw, circle}, scale=0.75]
@@ -231,7 +231,7 @@
                                 (4) --[color=magenta] (7);
                                 };
                         \end{tikzpicture}
-                        \subcaption{Magenta = 2}
+                        \caption{Magenta = 2}
                     \end{subfigure}
                     \begin{subfigure}{0.2451065\textwidth}
                         \begin{tikzpicture}[thick, main/.style= {draw, circle}, scale=0.75]
@@ -251,7 +251,7 @@
                                 (8) --[color=LimeGreen] (5);
                                 };
                         \end{tikzpicture}
-                        \subcaption{Grønn = 3}
+                        \caption{Grønn = 3}
                     \end{subfigure}
                 \end{tcolorbox}
             \end{center}
@@ -304,7 +304,7 @@
 
     % \subsubsection*{Rette linjer, Gittere og Hyperkuber} % Kanskje? Analyse
 
-    \subsection*{Generelle grafer}
+    \subsubsection{Generelle grafer}
 
         En myntet metode for kvantevandring som virker på en generell klasse av simple grafer er den som kalles for \emph{arc notation}. Denne metoden er ofte beskrevet som at man vandrer over kantene, istedenfor at man vandrer over nodene. Dette gjør at antallet qubits krevet for å beskrive grafen kan øke dramatisk.
 
@@ -383,7 +383,7 @@
             U(\psi)=SC(\ket{3}\otimes\ket{3})\simeq S(H\oplus H\oplus H^{\otimes 2}\oplus H)(\ket{3}\otimes\ket{3})\simeq S(\ket{3}\otimes H^{\otimes 2}(\ket{3})) \\ = S(\ket{3}\otimes(\sfrac{1}{2}\Sigma_{n=1}^4\ket{n}))=\sfrac{1}{2}\Sigma_{n=1}^4S(\ket{3}\otimes\ket{n}) = \sfrac{1}{2}\Sigma_{n=1}^4\ket{n}\otimes\ket{3}
         \end{multline*}
 
-    \subsubsection*{Kvantemynter}
+    \subsubsection{Kvantemynter}
 
         I litteraturen (\cite{Venegas_Andraca_2012} og \cite{portugal_2019}) er det tre kvantemynter som ofte er av stor interesse. Disse tre myntene blir brukt på grunn av at de er enkle å beskrive, og har anvendelser andre steder enn som en kvantemynt. Den første mynten har vi allerede snakket om, nemlig Hadamardmynten. Hadamardmynten kan brukes når dimensjonen til myntrommet er en 2-er potens $dim(\mathcal{H}_C)=2^n$. Da beskriver vi Hadamardmynten som:
         \begin{align*}
@@ -440,7 +440,7 @@
 
     Myntede kvantevandringsmetoder hermer etter klassiske tilfeldige vandringer ved at man tar et valg og følger denne. Valget man tar blir oversatt til et kvantemyntkast, hvilket som gjør at vi kan velge en superposisjon av valg. I motsetning til det klassiske valget, er valget fra kvantmyntkastet forhåndsbestemt ved operatoren som beskriver den. Dette gjør at selve myntkastet er en abstraksjon man ikke nødvendigivis trenger. Det finnes derfor flere metoder som utnytter andre strukturer hos grafer for å utføre kvantevandringer. Blant disse metodene har vi Portugal sin forskyvede metode (Staggered model, \cite{Portugal_2015}, \cite{portugal_2019}) og Szegedy sin metode (\cite{dewolf2021quantum}, \cite{portugal_2019}).
 
-    \subsubsection*{Staggered model} %Forskjøvet model
+    \subsubsection{Staggered model} %Forskjøvet model
 
         Den første umyntede metoden som vi skal se på er den forskyvede metoden. La $G=(V,E)$ være en graf. Vandringen baserer seg på å finne graf tesselleringer $\mathcal{T}_i$ og en assosiert graf tesselleringsdekke $\{\mathcal{T}_i\}$ til $G$. En graftessellering er en clique partisjon av nodene til $G$, og et element av $\mathcal{T}_i$ kalles for et polygon. $\mathcal{E}(\mathcal{T}_i)$ defineres som mengden av kanter tilhørende til polygonene i $\mathcal{T}_i$. En graf tesselleringsdekke er en samling av graf tesselleringer slik at alle kantene i grafen er dekket. Dette vil si at unionen av alle kantene i tesseleringene blir mengden av kanter.
         \begin{align*}
@@ -490,7 +490,7 @@
                                 };
                             
                         \end{tikzpicture}
-                        \subcaption{$\mathcal{T}_1$}
+                        \caption{$\mathcal{T}_1$}
                     \end{subfigure}
                     \begin{subfigure}{0.32\textwidth}
                         \begin{tikzpicture}[main/.style={draw,circle}, scale=0.75]
@@ -511,7 +511,7 @@
                                 };
                             
                         \end{tikzpicture}
-                        \subcaption{$\mathcal{T}_2$}
+                        \caption{$\mathcal{T}_2$}
                     \end{subfigure}
                     \begin{subfigure}{0.32\textwidth}
                         \begin{tikzpicture}[main/.style={draw,circle}, scale=0.75]
@@ -532,7 +532,7 @@
                             };
                             
                         \end{tikzpicture}
-                        \subcaption{$\mathcal{T}_3$}
+                        \caption{$\mathcal{T}_3$}
                     \end{subfigure}
                 \end{tcolorbox}
             \end{center}
@@ -548,10 +548,10 @@
 
         Her kan vi f.eks. se at mengden $\{1,3,5,7\}$ er et polygon i $\mathcal{T}_3$. Mengden $\{\mathcal{T}_1, \mathcal{T}_2, \mathcal{T}_3\}$ er en graf tesselleringsdekke, ettersom enhver kant i $G$ opptrer i et polygon fra $\mathcal{T}_i$ for en eller annen $i$. Her sier vi at tildekningsnummeret til graf tesselleringsdekket $\{\mathcal{T}_1, \mathcal{T}_2, \mathcal{T}_3\}$ er $3$. Merk at graf tesselleringsdekker ikke er unike.
 
-        Valget av en graf tesselleringsdekke vil bestemme hvordan kvantestegsoperatoren vil se ut. Hilbert rommet som kvantevandringen skal foregå i er $\mathcal{H}=\mathbb{C}V$, og for enhver graf tessellering $\mathcal{T}$ assosierer vi en operator $H_{\mathcal{T}}:\mathcal{H}\rightarrow\mathcal{H}$. Ethvert polygon $\alpha:\mathcal{T}$ assosierer vi med en vektor $\vec{\alpha}=\sfrac{1}{\sqrt{|\alpha|}}\Sigma_{v:\alpha}|v\rangle$ i $\mathcal{H}$. Vi kan nå definere operatoren $H_\mathcal{T}$ og kvantestegs operatoren $U$ som under.
+        Valget av en graf tesselleringsdekke vil bestemme hvordan kvantestegsoperatoren vil se ut. Hilbert rommet som kvantevandringen skal foregå i er $\mathcal{H}=\mathbb{C}V$. For enhver graf tessellering $\mathcal{T}$ assosierer vi en operator $H_{\mathcal{T}}:\mathcal{H}\rightarrow\mathcal{H}$, og ethvert polygon $\alpha:\mathcal{T}$ assosierer vi med en vektor $\vec{\alpha}=\sfrac{1}{\sqrt{|\alpha|}}\Sigma_{v:\alpha}|v\rangle$ i $\mathcal{H}$. Vi kan nå definere operatoren $H_\mathcal{T}$ og kvantestegs operatoren $U$ som under.
         \begin{align*}
             H_\mathcal{T} & =2\Sigma_{\alpha:\mathcal{T}}\alpha\alpha^* - I \\
-            U & = \bigcirc_{\mathcal{T}:Cover}H_\mathcal{T}
+            U & = \circ_{\mathcal{T}:Cover}H_\mathcal{T}
         \end{align*}
 
         Vi illustrer videre hvordan denne operatoren kan se ut med figur \ref{fig:shuriken}. Siden grafen $G$ har $8$ noder følger det at $\mathcal{H}=\mathbb{C}^8$. For å finne kvantestegsoperatoren $U$ trenger vi å regne ut alle vektorene $\alpha$. La $\alpha_1:\mathcal{T}_1$ være vektoren definert av polygonet $\{1,2,3\}$, $\alpha_2:\mathcal{T}_2$ være vektoren definert av polygonet $\{4\}$, osv. Vi velger at $\beta_i$ tilhører $\mathcal{T}_2$ og at $\gamma_i$ tilhører $\mathcal{T}_3$.
@@ -575,7 +575,7 @@
             \gamma_5 & = \ket{8}
         \end{align*}
 
-        Vi kan nå regne ut de hermitiske operatorene $H_{\mathcal{T}_i}$.
+        De hermitiske operatorene $H_{\mathcal{T}_i}$ kan sees til å være.
         \begin{align*}
             H_{\mathcal{T}_1} & = 2\Sigma_{i=1}^4\alpha_i\alpha_i^*-I = 
             \begin{pmatrix}
@@ -614,17 +614,30 @@
             \end{pmatrix}
         \end{align*}
 
-        Vi kan regne ut hva $U$ vil være.
+        Veldig simple beregninger vil vise at $U=H_{\mathcal{T}_3}H_{\mathcal{T}_2}H_{\mathcal{T}_1}$ er:
+        \begin{align*}
+            U = \begin{pmatrix}
+                \sfrac{-1}{18} & \sfrac{4}{9} & \sfrac{5}{18} & \sfrac{2}{3} & \sfrac{-7}{18} & \sfrac{-2}{9} & \sfrac{5}{18} & 0 \\
+                \sfrac{2}{3} & \sfrac{-1}{3} & \sfrac{2}{3} & 0 & 0 & 0 & 0 & 0 \\
+                \sfrac{5}{18} & \sfrac{4}{9} & \sfrac{-1}{18} & 0 & \sfrac{5}{18} & \sfrac{-2}{9} & \sfrac{-7}{18} & \sfrac{2}{3} \\
+                \sfrac{4}{9} & \sfrac{4}{9} & \sfrac{-2}{9} & \sfrac{-1}{3} & \sfrac{-2}{9} & \sfrac{4}{9} & \sfrac{4}{9} & 0 \\
+                \sfrac{-7}{18} & \sfrac{-2}{9} & \sfrac{5}{18} & 0 & \sfrac{-1}{18} & \sfrac{4}{9} & \sfrac{5}{18} & \sfrac{2}{3} \\
+                0 & 0 & 0 & 0 & \sfrac{2}{3} & \sfrac{-1}{3} & \sfrac{2}{3} & 0 \\
+                \sfrac{5}{18} & \sfrac{-2}{9} & \sfrac{-7}{18} & \sfrac{2}{3} & \sfrac{5}{18} & \sfrac{4}{9} & \sfrac{-1}{18} & 0 \\
+                \sfrac{-2}{9} & \sfrac{4}{9} & \sfrac{4}{9} & 0 & \sfrac{4}{9} & \sfrac{4}{9} & \sfrac{-2}{9} & \sfrac{-1}{3}
+            \end{pmatrix}.
+        \end{align*}
 
-        Merk at rekkefølgen vi komponerer operatorene våre har ikke noe å si. Ved å anvende en permutering på graf tesselleringsdekket ender vi opp med en ny graf tesselleringsdekket, dette gjør at alle permutasjoner gir opphav til en ny gyldig kvantevandring. Vi kan i tillegg vekte hvor mye hver hermitiske operator skal bidra til vandringen. Gitt at vi har en permutasjon $\sigma$ på graf tesselleringsdekket kan vi definere $U$ som under.
+        Merk at rekkefølgen vi komponerer operatorene våre gir nye kvantevandringer over grafen. Ved å anvende en permutering på graf tesselleringsdekket ender vi opp med en ny graf tesselleringsdekke, dette gjør at alle permutasjoner gir opphav til en ny gyldig kvantevandring. Vi kan i tillegg vekte hvor mye hver hermitiske operator skal bidra til vandringen. Gitt at vi har en permutasjon $\sigma$ på graf tesselleringsdekket kan vi definere $U$ som under.
         \begin{align*}
             U=\Pi_{n=1}^ke^{i\theta H_{\mathcal{T}_{\sigma(n)}}}=\Pi_{n=1}^k(\cos(\theta)I+i\sin(\theta)H_{\mathcal{T}_{\sigma(n)}})
         \end{align*}
         En forskyvet metode basert på en tesselleringsdekke med størrelse $k$ kalles for en $k$-tessellerbar kvantevandring.
 
-    \subsubsection*{Szegedy vandring}
+    \subsubsection{Grensepunktet og quasi-periodisitet}
+
+        Jeg kan skrive kort om at det ikke finnes et grensepunkt og om quasi-periodisiteten.
         
-        Denne kan jeg ikke så godt...
 
 \subsection{Kvantesøk}
 
@@ -636,11 +649,11 @@
             & \psi_1 \mapsto -\psi_1 \\
             &\psi_k \mapsto \psi_k
         \end{align*}
-        En kvantevandringsbasert QSS operator $S=UR$, denne kaller vi også for den modifiserte kvantestegsoperatoren. En generell QSS operator $S=DR$ trenger å tilfredstille at den initielle tilstanden $s$ overlapper med den merkede noden $\psi_1$, aka $\langle s,\psi_1\rangle\neq 0$. Vi krever også at $s$ er en egenvektor til $D$. I dette rammeverket kan vi se at $D=2uu*-I$, gir Grover's algoritme. \todo{Føler det kan være greit å ha noen ting om at Grover's algoritme er optimal elns} Ettersom den kvantevandringsbaserte algoritmen har noe enklere form velger vi å fokusere på den.
+        En kvantevandringsbasert QSS operator $S=UR$, denne kaller vi også for den modifiserte kvantestegsoperatoren. En generell QSS operator $S=DR$ trenger å tilfredstille at den initielle tilstanden $s$ overlapper med den merkede noden $\psi_1$, aka $\langle s,\psi_1\rangle\neq 0$. Vi krever også at $s$ er en egenvektor til $D$. I dette rammeverket kan vi se at $D=2uu*-I$, gir Grover's algoritme. Faktisk er Grover's algoritme den optimale QSS algoritmen \cite{Zalka_1999}. Ettersom den kvantevandringsbaserte QSS algoritmen har noe enklere form velger vi å fokusere på den.
         
         Et kvantesøk over grafen $G$ vil være en operator på formen $\mathcal{S} = MS^tP$, her er $M$ en måling av tilstanden i basisen til nodene, $t$ er antallet ganger det modifiserte kvantesteget skal kjøre, og $P$ er en operator som sender $\ket{0}$ til den initielle tilstanden. La $s = P(\ket{0})$ være den initielle tilstanden, og $p(t)$ sjansen for å måle $\psi_1$. For å finne ut hvilken $t$ vi burde bruke ønsker vi å maksimere $p(t)$.
         \begin{align*}
-            p(t) = |\langle\psi_1|S\ket{s}|^2 
+            p(t) = |\langle\psi_1|S^t\ket{s}|^2 
         \end{align*}
 
         For alle praktiske anvendelser er det best å tilnærme en $t$ ved å bruke numeriske metoder for å maksimere $t$. Gitt noen flere betingelser kan man bruke resultatene til Tulsi og Portugal for å estimere en $t$. For dette er det tilstrekkelig å vite spektraldekomposisjonen til operatoren $U$. La egenvektorene til $U$ være $\vec{\phi_k}$, med egenverdiene $e^{i\phi_k}$. Med disse vektorene kan vi regne ut tre konstanter:

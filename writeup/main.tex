@@ -72,7 +72,7 @@ BCOR=5mm, % Binding correction
 
 \listoffigures % Print the list of figures
 
-\listoftables % Print the list of tables
+% \listoftables % Print the list of tables
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT
@@ -126,5 +126,184 @@ BCOR=5mm, % Binding correction
 \bibliography{references.bib} % The file containing the bibliography
 
 %----------------------------------------------------------------------------------------
+
+\newpage
+
+%----------------------------------------------------------------------------------------
+%   APPENDICES
+%----------------------------------------------------------------------------------------
+
+\appendix
+
+\section{Q\# intro kode}
+
+    \begin{Verbatim}[gobble=2, numbers=left, frame=lines,
+        framesep=3mm,
+        label={[Beginning of code]End of code}]
+        namespace ReportQ {
+            open Microsoft.Quantum.Intrinsic;
+            open Microsoft.Quantum.Canon;
+
+            // Functions are made using the function keyword.
+            // Functions are pure, i.e. given the input, the output should always be the same.
+            function HelloWorld() : Unit {
+                Message("Hello World!"); // Message : String -> Unit
+            }
+
+            // Arguments and output needs to be typed.
+            function Add(x : Int, y : Int) : Int {
+                return x+y;
+            }
+
+            // The operation keywords allows impure functions.
+            // This is necessary in order to allow quantum weirdness.
+            operation HelloQuantumWorld() : Unit {
+                // "use" keyword creates qubits.
+                // Qubits are initialized in the state |0⟩.
+                // Qubit() means to create exactly 1 qubit.
+                use register = Qubit();
+
+                // H is the Hadamard transform, apply H to the register
+                H(register);
+
+                // Controlled statements are made using if-else
+                // To measure a qubit we use the M function, M : Qubit -> Result.
+                if M(register) == Zero {
+                    Message("Hello Quantum World");
+                }
+                else {
+                    Message("Bonjour le monde quantique");
+                }
+
+                // Before the operation is ended, 
+                // every qubit created in the operation needs to be released.
+                // A qubit is released if it is in the state it was initialized in.
+                // We use Reset to send a qubit to the state |0⟩.
+                Reset(register);
+            }
+
+            operation HelloMultiQuantumWorld() : Unit {
+                // The keyword Qubit[n] creates n qubits.
+                use register = Qubit[2];
+
+                // This function applies H to each qubit, see documentation for more info.
+                ApplyToEachCA(H, register);
+
+                // There are two ways to initialize variables.
+                // let keywords creates immutable objects, they may not be changed.
+                let a = 2;
+
+                // mutable keywords creates mutable objects, 
+                // they may be changed using the set keyword.
+                mutable num = 0;
+                
+                // For loops are used to iterate over an iterable object
+                // Repeat loops are used instead of while loops
+                // for conditional iteration, see documentation for more info.
+                // While loops may be used safely within function statements.
+                for i in 0..1 {
+                    if M(register[i]) == One {
+                        // We use set to change num
+                        set num = num + 2^i;
+                    }
+                }
+
+                // Bigger if-else blocks may be constructed with elif.
+                if num == 0 {
+                    Message("Hello Quantum World!");
+                }
+                elif num == 1 {
+                    Message("Bonjour le monde quantique!");
+                }
+                elif num == 2 {
+                    Message("Hallo kvanteverden!");
+                }
+                else {
+                    Message("Kon'nichiwa ryōshi sekai!");
+                }
+            }
+
+            operation MoreOnOperators() : Unit {
+                // Single qubit operators.
+                    // Create a qubit in state |0⟩.
+                    use q = Qubit();
+
+                    // We have the Pauli matrices, X, Y, Z.
+                    X(q);
+                    Y(q);
+                    Z(q);
+
+                    // The Hadamard transform.
+                    H(q);
+
+                    // Rotation transforms,
+                    // around the x, y and z axis respectively.
+                    // We need a double to set the operator.
+                    let theta = 1.57;
+                    Rx(theta, q);
+                    Ry(theta, q);
+                    Rz(theta, q);
+
+                    // The pi/4 and pi/8 phase operator.
+                    S(q);
+                    T(q);
+
+                // Multi qubit operators.
+                    // Create qubits in state |00⟩.
+                    use qs = Qubit[3];
+
+                    // Controlled not gate.
+                    CNOT(qs[0],qs[1]);
+
+                    // SWAP gate.
+                    SWAP(qs[0],qs[1]);
+
+                    // Some operator have the Controlled or Ctl property.
+                    // These operators may be controlled .
+                    // or multi-controlled with the keyword Controll.
+
+                    // Controlled Hadamard.
+                    Controlled H([qs[0]],qs[1]);
+
+                    // Multicontrolled Pauli X.
+                    // This is the same as CCNOT.
+                    Controlled X([qs[0],qs[1]],qs[2]);
+
+                // Conjugated operators.
+                    // Some operators have the Adjoint or Adj property.
+                    // Operators with this property may be auto inverted .
+                    // (see docs to see how to implement this property by hand)
+                    
+                    // This auto-inversion allows us to conjugate an operator.
+                    // An operator A is conjugated by B whenever we do BAB^-1.
+                    // Conjugation is done in Q# with a within-apply block.
+                    // Within represents B and apply represents A.
+                    within {
+                        X(q);
+                    }
+                    apply {
+                        H(q);
+                    }
+
+                    // This is the same as:
+                    // (Note that X is hermitian, so X = X^-1)
+                    X(q);
+                    H(q);
+                    X(q);
+            }
+
+            // An operation is defined to have the Adjoint property
+            // if it returns type Unit is Adj
+            // It is defined to have the Controlled property
+            // if it returns the type Unit is Ctl
+            // It has both property if it returns the type Unit is Adj + Ctl
+            operation AdjointAndControlled(target : Qubit) : Unit
+            is Adj + Ctl {
+                H(target);
+            }
+        }
+    \end{Verbatim}
+
+
 
 \end{document}

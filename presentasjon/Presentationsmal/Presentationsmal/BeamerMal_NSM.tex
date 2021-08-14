@@ -1,0 +1,39 @@
+\documentclass[norsk]{beamer}
+
+%Standardpakker
+\usepackage{xcolor}
+\usepackage[utf8]{inputenx} % For æ, ø, å
+\usepackage{babel}          % For oversettelser
+\usepackage{microtype}      % Bedre typesetting
+\usepackage{amssymb}        
+\usepackage{mathtools}
+
+%Spesielle pakker
+\usepackage{lipsum}
+\usepackage{mwe}
+
+\usetheme{NSM}
+
+\author{Navn Navnesen}
+\title{Et fantastisk foredrag}
+\subtitle{En undertittel}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frame}{Første slide}
+	\lipsum[1]
+\end{frame}
+
+\begin{frame}{Andre slide}
+	\begin{center}
+		\includegraphics[height=.7\textheight]{example-image}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Tredje slide}
+	\lipsum[3]
+\end{frame}
+
+\end{document}

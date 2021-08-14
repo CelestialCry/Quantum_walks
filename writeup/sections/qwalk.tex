@@ -636,8 +636,25 @@
 
     \subsubsection{Grensepunktet og quasi-periodisitet}
 
-        Jeg kan skrive kort om at det ikke finnes et grensepunkt og om quasi-periodisiteten.
-        
+        Hva skjer med en kvantevandring ved uendelige steg? Hvis vi antar at operatoren $U$ er en kvantevandring og vi har starttilstand $\psi$, hvordan ser $\varprojlim_{t\rightarrow\infty}U^t\psi$ ut? Det som vi først må vite er om denne grensen i det hele tatt konverger. Ettersom operatoren $U$ kreves til å være unitær, følger det at $||U^{t+1}\psi - U^t\psi||$ er konstant for alle $t$. Denne grensen vil kun eksistere om $\psi$ er et fikspunkt av $U$ til å starte med.
+
+        Et annet interessant spørsmål som vi kan spørre oss er om kvantevandringen tilbakestiller seg selv. Med andre ord, gitt $U$ og $\psi$ som over, finnes det en $t$ slik at $U^t\psi = \psi$? Vi spør om $U$ har periode $t$, og generelt sett finner vi ikke unitære operatorer med en slik egenskap, men vi kan i det minste at de er quasi-periodiske. Quasi-periodisk i denne konteksten vil si at de er periodisk opp til en epsilon ball med feil. For å motivere dette vil vi se på analysen til en $2$ dimensjonal unitær operator.
+
+        La $U$ være $2$ dimensjonal og diagonaliserbar, da er den similær til en matrise på formen
+        \begin{align*}
+            U = \begin{pmatrix*}
+                e^{2\pi i\lambda_1} & 0 \\
+                0 & e^{2\pi i\lambda_2}
+            \end{pmatrix*}.
+        \end{align*}
+        Vi kan arbitrært tilnærme $\lambda_j$ med rasjonalle tall $\sfrac{a_j}{b_j}$. Vi kan da skrive opp følgende
+        \begin{align*}
+            U^{b_1b_2} \approx \begin{pmatrix*}
+                1 & 0 \\
+                0 & 1
+            \end{pmatrix*}.
+        \end{align*}
+        Dette er ikke et bevis på at alle kvantecandringer er quasi-periodiske. For å fullføre det må vi først definere hva quasi-periodisk er litt mer rigorøst og komme med et induksjonbevis for å dekke alle de endelige dimensjonene. Det følger av dette at vi ikke kan garantere eller burde forvente at kvantevandringer på uendelige grafer er quasi-periodiske, og at dette er kun en egenskap vi finner hos endelige grafer. 
 
 \subsection{Kvantesøk}
 

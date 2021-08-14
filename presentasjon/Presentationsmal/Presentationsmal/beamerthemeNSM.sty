@@ -1,0 +1,555 @@
+% Presentation theme for NSM
+
+%Adapted from the official theme of the Department of Mathematics in Oslo by Martin Helsø.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\RequirePackage{calc}
+\RequirePackage{eso-pic}
+\RequirePackage{etoolbox}
+\RequirePackage[LGR, T1]{fontenc}
+\RequirePackage{thmtools}
+\RequirePackage{tikz}
+\hypersetup{colorlinks,
+            linkcolor =,
+            citecolor =}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Standard headers:
+\DeclareOptionBeamer{american} { \def \MATHlang {eng} }
+\DeclareOptionBeamer{english}  { \def \MATHlang {eng} }
+\DeclareOptionBeamer{UKenglish}{ \def \MATHlang {eng} }
+\DeclareOptionBeamer{USenglish}{ \def \MATHlang {eng} }
+\DeclareOptionBeamer{norsk}
+{
+    \def \MATHlang {bm}
+    \pretolerance = 200000
+    \tolerance    = 600000
+    \hbadness     = 600000
+}
+\urlstyle{sf}
+
+%% Vertical text alignment:
+\DeclareOptionBeamer{c}{ \beamer@centeredtrue  }
+\DeclareOptionBeamer{t}{ \beamer@centeredfalse }
+
+
+%% Theorem numbers:
+\DeclareOptionBeamer{unnumbered}{ \def \MATHtheorem {}          }
+\DeclareOptionBeamer{numbered}  { \def \MATHtheorem {numbered}  }
+\DeclareOptionBeamer{AMS}       { \def \MATHtheorem {ams style} }
+
+
+%% Font:
+\providebool{neohellenic}
+\providebool{latinmodern}
+\DeclareOptionBeamer{SansSerif}
+{
+    \def \MATHfont {default}
+    \setbool{neohellenic}{true}
+    \setbool{latinmodern}{false}
+}
+\DeclareOptionBeamer{MathSerif}
+{
+    \def \MATHfont {professionalfonts}
+    \setbool{neohellenic}{false}
+    \setbool{latinmodern}{false}
+}
+\DeclareOptionBeamer{Serif}
+{
+    \def \MATHfont {serif}
+    \setbool{neohellenic}{false}
+    \setbool{latinmodern}{true}
+}
+
+
+%% Logo on ordinary slides
+\providebool{logo}
+\DeclareOptionBeamer{Logo}  { \setbool{logo}{true} }
+\DeclareOptionBeamer{NoLogo}{ \setbool{logo}{false} }
+
+
+%% Automatic first and last frame:
+\DeclareOptionBeamer{TitlePage} { \def \MATHfirstframe {\TitlePage}  }
+\DeclareOptionBeamer{FinalFrame}{ \def \MATHlastframe  {\FinalFrame} }
+\DeclareOptionBeamer{NoTitlePage} { \def \MATHfirstframe {} }
+\DeclareOptionBeamer{NoFinalFrame}{ \def \MATHlastframe  {} }
+
+
+\ExecuteOptionsBeamer{english}
+\ExecuteOptionsBeamer{t}
+\ExecuteOptionsBeamer{unnumbered}
+\ExecuteOptionsBeamer{MathSerif}
+\ExecuteOptionsBeamer{Logo}
+\ExecuteOptionsBeamer{TitlePage}
+\ExecuteOptionsBeamer{FinalFrame}
+\ProcessOptionsBeamer
+
+
+\AtBeginDocument{ \MATHfirstframe }
+\AtEndDocument  { \MATHlastframe  }
+
+
+\ifbool{latinmodern}
+{
+    \renewcommand{\rmdefault}{phv} % Latin Modern Roman
+}
+{
+   \renewcommand{\rmdefault}{phv}  % Bookman
+}
+
+\renewcommand{\sfdefault}{phv} % Helvetica
+\renewcommand{\ttdefault}{phv} % Courier
+
+
+%% Allow more stretching
+\setlength{\emergencystretch}{3em}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Official colours:
+\definecolor{nsmblue}{RGB}{9,37,59}%{61, 96, 152}%{125, 189, 201}
+
+
+%% Theme-specific colours:
+\definecolor{alertblock}{cmyk}{0, 1, 1, 0.2}
+\definecolor{blockbody}{RGB}{9,37,59}
+\definecolor{colortheme}{RGB}{68,81,95}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\mode<presentation>
+
+
+\useinnertheme{rectangles}
+\usefonttheme{\MATHfont}
+
+
+\setbeamertemplate{theorems}[\MATHtheorem]
+\setbeamertemplate{qed symbol}{\(\blacksquare\)}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption label separator}{: }
+\setbeamersize{text margin left  = 3.845mm,
+               text margin right = 3.845mm}
+
+
+%% Standard colours:
+\setbeamercolor{structure}{fg = colortheme}
+\setbeamercolor{section in head/foot}{fg = white,
+                                      bg = black}
+
+
+
+%% Custom colours:
+\setbeamercolor{author in final frame}  {fg = white}
+\setbeamercolor{title in final frame}   {fg = white}
+\setbeamercolor{subtitle in final frame}{fg = white}
+
+
+% %% Standard fonts:
+% \setbeamerfont{author}    {size   = \large,
+%                            series = \normalfont\bfseries}
+\setbeamerfont{title}{size   = \huge}
+
+%% Custom fonts:
+\setbeamerfont{author in final frame}  {size   = \LARGE,
+                                        series = \bfseries}
+\setbeamerfont{title in final frame}   {size   = \LARGE,
+                                        series = \bfseries}
+\setbeamerfont{subtitle in final frame}{  size = \Large,
+                                        series = \normalfont\rmfamily}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{title page}
+{
+    \AddToShipoutPictureFG*
+    {
+        \AtPageUpperLeft
+        {
+            \hspace{3 mm}
+            \parbox[t][3.3cm][b]{\textwidth}
+            {
+                \includegraphics[width = 0.98\textwidth]
+                {TemplateFigurer/NSMbakgrunnStor}
+            }
+        }
+
+        \AtPageUpperLeft
+        {
+            \hspace{3 mm}
+            \parbox[t][4.8cm][b]{\textwidth}
+            {
+                \includegraphics[scale = 0.08]
+                {TemplateFigurer/NSMlogo4}
+            }
+        }
+    }
+
+    \vbox to \textheight
+    {
+        \vspace{52 mm}
+
+        \leftskip  = 1.25 cm
+        \rightskip = 1.2365 cm plus 2 cm
+
+        \usebeamerfont{title}    \structure{\inserttitle}
+        \\[0.2ex]
+        \usebeamerfont{subtitle} \structure{\insertsubtitle}
+
+        \vfill
+
+        \usebeamerfont{author} \insertauthor
+        \hfill
+        \newlength{\datewidth}
+        \settowidth{\datewidth}{\insertdate}
+        \parbox{\datewidth}
+        {
+            \usebeamerfont{date} \insertdate
+        }
+    }
+}
+
+
+\newcommand{\TitlePage}
+{
+    \begin{frame}[plain, noframenumbering]
+        \titlepage
+    \end{frame}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newlength{\radius}
+\setlength{\radius}{0.05\paperwidth}
+
+\newcommand{\FinalFrame}
+{
+    {
+        \setbeamercolor{background canvas}{bg = black}
+
+        \begin{frame}[plain, noframenumbering]
+
+            \AddToShipoutPictureFG*
+            {
+
+                \AtPageUpperLeft
+                {
+                    \hspace{0.976\radius}
+                    \parbox[t][0.2\paperheight][b]{\textwidth}
+                    {
+                        \includegraphics[scale = 0.08]
+                        {TemplateFigurer/NSMlogoNegativ}
+                    }
+                }
+
+                \AtPageLowerLeft
+                {
+                    \hspace{2\radius}
+                    \parbox[b][4\radius][t]{2\radius}
+                    {
+                        \includegraphics[width = 2\radius]
+                        {TemplateFigurer/NSMlogoNegativ2}
+                    }
+                }
+
+
+                \AtPageUpperLeft
+                {
+                    \hspace{4.1\radius}
+                    \parbox[t]
+                    [\dimexpr0.28\paperheight+2\radius\relax]
+                    [b]
+                    {\dimexpr\textwidth-5\radius\relax}
+                    {
+                        \vbox to 2\radius
+                        {
+                            \vfill
+                            \raggedright
+                            \usebeamerfont{author in final frame}
+                            \usebeamercolor[fg]{author in final frame}
+                            \insertauthor
+                            \vfill
+                        }
+                    }
+                }
+
+                \AtPageLowerLeft
+                {
+                    \hspace{4.1\radius}
+                    \parbox[b]
+                    [\dimexpr0.72\paperheight-3.1\radius\relax]
+                    [t]
+                    {\dimexpr\textwidth-5\radius\relax}
+                    {
+                        \raggedright
+                        \usebeamerfont{title in final frame}
+                        \usebeamercolor[fg]{title in final frame}
+                        \inserttitle
+                        \\
+                        \usebeamerfont{subtitle in final frame}
+                        \usebeamercolor{subtitle in final frame}
+                        \insertsubtitle
+                    }
+                }
+            }
+        \end{frame}
+    }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{frametitle}
+{
+    \vspace{3mm}
+    \hspace{-0.5mm}
+    \insertframetitle
+    \vspace{3mm}
+}
+
+\renewcommand{\framesubtitle}[1]{\par\smallskip\textbf{\large#1}\par\medskip}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{headline}
+{
+    \ifbool{logo}
+    {
+        \AddToShipoutPictureFG*
+        {
+            \AtPageUpperLeft
+            {
+                \hspace{1 mm}
+                \parbox[t][1.2 cm][b]{\textwidth}
+                {
+                    \includegraphics[scale = 1]
+                    {TemplateFigurer/NSMlogo3}
+                }
+            }
+        }
+        \vspace*{11mm}
+    }
+    { \vspace*{1.7 mm} }
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{footline}
+{
+    \hbox to \paperwidth
+    {%
+        \begin{beamercolorbox}[wd = 0.33\paperwidth,
+                               ht = 2.25ex,
+                               dp = 1ex]
+                              {section in head/foot}
+
+                \hfil
+                \usebeamerfont{author in head/foot}
+                \insertshortauthor
+                \hfil
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd = 0.34\paperwidth,
+                               ht = 2.25ex,
+                               dp = 1ex]
+                              {section in head/foot}
+
+                \hfil
+                \usebeamerfont{title in head/foot}
+                \insertshorttitle
+                \hfil
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd = 0.33\paperwidth,
+                               ht = 2.25ex,
+                               dp = 1ex]
+                              {section in head/foot}
+
+                \hfil
+                \usebeamerfont{date in head/foot}
+                \insertshortdate
+                \hspace*{2em}
+                \insertframenumber{} / \inserttotalframenumber
+                \hspace*{2ex}
+        \end{beamercolorbox}
+    }
+    \vskip0pt
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Increase indentation:
+\AtBeginEnvironment{itemize}  { \setlength{\leftmargini}{12.285mm} }
+\AtBeginEnvironment{enumerate}{ \setlength{\leftmargini}{13.582mm} }
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%% Redefine blocks with larger indentations,
+%% and some environmental colours:
+\setbeamertemplate{block begin}
+{
+    \setbeamercolor{itemize item}  {fg = block title.bg}
+    \setbeamercolor{item projected}{fg = block title.fg,
+                                    bg = block title.bg}
+    \setbeamercolor{description item}{fg = alert}
+    \setbeamercolor{caption name}    {fg = alert}
+
+    \unskip
+    \vskip1.3ex
+
+    \begin{beamercolorbox}[ht        = 2.4  ex,
+                           dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex]
+                          {block title}
+
+        \usebeamerfont*{block title}
+        \insertblocktitle
+    \end{beamercolorbox}
+
+    \nointerlineskip
+
+    \usebeamerfont{block body}
+    \begin{beamercolorbox}[dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex,
+                           vmode]
+                          {block body}
+        \vspace*{1ex}
+        \begin{minipage}{\textwidth - 1.5ex}
+}
+
+\setbeamertemplate{block end}
+{
+        \end{minipage}
+    \vskip0pt
+    \end{beamercolorbox}
+    \vskip1.3ex
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Standard colours:
+\setbeamercolor{structure}{fg = colortheme}
+\setbeamercolor{block title}{fg = white,
+                             bg = structure}
+\setbeamercolor{block body} {bg = blockbody,
+                            fg = white}
+
+\setbeamertemplate{block example begin}
+{
+    \setbeamercolor{itemize item}  {fg = block title example.bg}
+    \setbeamercolor{item projected}{fg = block title example.fg,
+                                    bg = block title example.bg}
+    \setbeamercolor{description item}{fg = alert}
+    \setbeamercolor{caption name}    {fg = alert}
+
+    \unskip
+    \vskip1.3ex
+
+    \begin{beamercolorbox}[ht        = 2.4  ex,
+                           dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex]
+                          {block title example}
+
+        \usebeamerfont*{block title example}
+        \insertblocktitle
+    \end{beamercolorbox}
+
+    \nointerlineskip
+
+    \usebeamerfont{block body example}
+    \begin{beamercolorbox}[dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex,
+                           vmode]
+                          {block body example}
+        \vspace*{1ex}
+        \begin{minipage}{\textwidth - 1.5ex}
+}
+
+\setbeamertemplate{block example end}
+{
+        \end{minipage}
+    \vskip0pt
+    \end{beamercolorbox}
+    \vskip1.3ex
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setbeamertemplate{block alerted begin}
+{
+    \setbeamercolor{itemize item}  {fg = block title alerted.bg}
+    \setbeamercolor{item projected}{fg = block title alerted.fg,
+                                    bg = block title alerted.bg}
+    \setbeamercolor{description item}{fg = alert}
+    \setbeamercolor{caption name}    {fg = alert}
+
+    \unskip
+    \vskip1.3ex
+
+    \begin{beamercolorbox}[ht        = 2.4  ex,
+                           dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex]
+                          {block title alerted}
+
+        \usebeamerfont*{block title alerted}
+        \insertblocktitle
+    \end{beamercolorbox}
+
+    \nointerlineskip
+
+    \usebeamerfont{block body alerted}
+    \begin{beamercolorbox}[dp        = 1    ex,
+                           leftskip  = 0.75 ex,
+                           rightskip = 0.75 ex,
+                           vmode]
+                          {block body alerted}
+        \vspace*{1ex}
+        \begin{minipage}{\textwidth - 1.5ex}
+}
+
+\setbeamertemplate{block alerted end}
+{
+        \end{minipage}
+    \vskip0pt
+    \end{beamercolorbox}
+    \vskip1.3ex
+
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pretolerance = 200000
+\tolerance    = 600000
+\hbadness     = 600000
+\hfuzz        = 100pt 
+
+\endinput

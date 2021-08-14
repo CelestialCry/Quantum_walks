@@ -8,7 +8,7 @@
 
         Q\# er et sterkt typet språk, dette vil si at man ikke kan gjøre implisitt casting mellom typer, og alle funksjoner skal ha en entydig type signatur. De typene som er primitive for språket er String, Int, Double, =>, Qubit, Result, Unit og Array. String, Int, Double og => er kjent fra andre programmeringsspråk, nemlig tekst, heltall, flyttall og funksjoner. Typene som skiller Q\# fra andre språk er Qubit, Result og Unit. En term av typen Qubit representerer en qubit i et kvantesystem. På disse kan vi utføre operasjoner som har typen Qubit => Unit. Unit typen fanger effekter som utføres på qubits eller filer. Typen Unit kan ligne på Void typen i C, men den er analog til IO monaden i Haskell. Typen Result har termene Zero og One, og denne representerer en måling av et system. Den siste typen Array er en funktor av typer. Dette vil si at det er en abstrakt type som opererer på andre typer. F.eks. kan vi lage Int[] og Qubit[], som er lister av heltall og lister av qubits.
 
-        For å beskrive hvordan Q\# er det vedlagt introduksjons kode i appendix A. Denne forklarer hvordan man konstruerer funksjoner, deklarerer variabler og bruke kontroll uttrykk.
+        En forklaring av Q\# er vedlagt i appendix A som instruksjonskode. Denne koden forklarer hvordan man konstruerer funksjoner, deklarerer variabler og bruker kontroll uttrykk som if-else.
 
         All koden som er skrevet til dette prosjektet ligger opplastet på \url{https://github.com/celestialcry/quantum_walks}. Den relevante koden ligger i Program.qs. Bemerk at koden er kjørt fra Python via filen host.py.
 

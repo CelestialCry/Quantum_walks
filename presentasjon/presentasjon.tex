@@ -9,14 +9,17 @@
 \usepackage{mathtools}
 \usepackage{xfrac}
 \usepackage{graphicx}
+\graphicspath{{../writeup/Figures/}}
 
 %Spesielle pakker
 \usepackage{lipsum}
 \usepackage{mwe}
+\usepackage{tcolorbox}
 
 %Tikz
 \usepackage{tikz}
 \usetikzlibrary{quantikz}
+\usetikzlibrary{graphs}
 
 \usetheme{NSM}
 
@@ -370,7 +373,7 @@
 			\begin{onlyenv}<3>
 				\item Kvante løsning:
 				\begin{quantikz}
-					\lstick[wires = 3]{$|0\rangle^{\otimes n}$} & \gate{H} & \gate[3]{O_{f,\pm}}\gategroup[wires = 3, steps = 4, style = {dashed, rounded corners}]{G} & \gate{H} & \gate[wires = 3]{R} & \gate{H} & \gate[3]{G} & \qw \ldots & \gate[3]{G} & \qw \\
+					\lstick[wires = 3]{$|0\rangle^{\otimes n}$} & \gate{H} & \gate[3]{O_{f,\pm}}\gategroup[wires = 3, steps = 4, style = {rounded corners}]{G} & \gate{H} & \gate[wires = 3]{R} & \gate{H} & \gate[3]{G} & \qw \ldots & \gate[3]{G} & \qw \\
 					& \gate{H} & & \gate{H} & & \gate{H} & & \qw \ldots & & \qw \\
 					& \gate{H} & & \gate{H} & & \gate{H} & & \qw \ldots & & \qw
 				\end{quantikz}
@@ -401,8 +404,8 @@
 		\begin{itemize}
 			\item Definer to tilstander
 			\begin{align*}
-				g & = \frac{1}{\sqrt{t}}\Sigma_{z\in \{0,\ 1\}^n \mid f(z)=1}|z\rangle \\
-				b & = \frac{1}{\sqrt{2^n-t}}\Sigma_{z\in \{0,\ 1\}^n \mid f(z)\neq 1}|z\rangle
+				g & = \frac{1}{\sqrt{t}}\sum_{f(z)=1}|z\rangle \\
+				b & = \frac{1}{\sqrt{2^n-t}}\sum_{f(z) = 0}|z\rangle
 			\end{align*}
 			\begin{minipage}{0.3\textwidth}
 				\begin{tikzpicture}
@@ -418,7 +421,7 @@
 				\end{tikzpicture}
 			\end{minipage}
 			\begin{minipage}{0.35\textwidth}
-				\item Velg $\theta$ for effekt
+				\item Velg $\theta$
 				\begin{align*}
 					\theta & = \arcsin(\frac{\sqrt{t}}{\sqrt{2}^n}) \\
 					d & = \sin(\theta)g + \cos(\theta)b
@@ -434,42 +437,550 @@
 				& \mathcal{O}_{f,\pm}(g) = -g \\
 				& \mathcal{O}_{f,\pm}(b) = b
 			\end{align*}
-			\begin{tikzpicture}[scale=1.5]
-				\draw[step=.5,gray,very thin] (-1.3,-1.3) grid (1.3,1.3);
-				\draw[gray, thick] (0,0) circle (1);
-				\draw[gray, thick] (1.3, 0) -- (-1.3, 0);
-				\draw[gray, thick] (0, 1.3) -- (0, -1.3);
-				\draw[green!80!white, thick, ->] (0,0) -- (0, 1) node[above=2pt, fill=white] {g};
-				\fill[red!80!orange!20!white] (0,0) -- (0.3, 0) arc (0:85:0.3) -- (0,0);
-				\fill[blue!15!white] (0,0) -- (0.3, 0) arc (0:30:0.3) -- (0,0);
-				\fill[orange!80!white] (0,0) -- (0.3, 0) arc (0:-30:0.3) -- (0,0);
-				\draw[orange!90!white, thick] (0.3, 0) arc (0:85:0.3) node[right=0pt] {$2\theta$};
-				\draw[blue!65!white, thick] (0.3, 0) arc (0:30:0.3) node[right=2pt] {$\theta$};
-				\draw[orange!90!white, thick] (0.3, 0) arc (0:-30:0.3) node[right=2pt] {$\theta$};
-				\draw[blue!80!white, thick, ->] (0,0) -- (0.85,0.52) node[right=3pt, fill=white] {d};
-				\draw[orange!80!white, thick, ->] (0,0) -- (0.15,0.98) node[above=3.2pt, fill=white] {$G(d)$};
-				\draw[orange!80!white, thick, ->] (0,0) -- (0.85,-0.52) node[below=3pt, fill=white] {$\mathcal{O}_{(b_k)_N,\pm}(d)$};
-				\draw[red, thick, ->] (0,0) -- (1,0) node[right=2pt, fill=white] {b};
-			\end{tikzpicture}
+			\begin{center}				
+				\begin{tikzpicture}[scale=1.5]
+					\draw[step=.5,gray,very thin] (-1.3,-1.3) grid (1.3,1.3);
+					\draw[gray, thick] (0,0) circle (1);
+					\draw[gray, thick] (1.3, 0) -- (-1.3, 0);
+					\draw[gray, thick] (0, 1.3) -- (0, -1.3);
+					\draw[green!80!white, thick, ->] (0,0) -- (0, 1) node[above=2pt, fill=white] {g};
+					\fill[red!80!orange!20!white] (0,0) -- (0.3, 0) arc (0:85:0.3) -- (0,0);
+					\fill[blue!15!white] (0,0) -- (0.3, 0) arc (0:30:0.3) -- (0,0);
+					\fill[orange!80!white] (0,0) -- (0.3, 0) arc (0:-30:0.3) -- (0,0);
+					\draw[orange!90!white, thick] (0.3, 0) arc (0:85:0.3) node[right=0pt] {$2\theta$};
+					\draw[blue!65!white, thick] (0.3, 0) arc (0:30:0.3) node[right=2pt] {$\theta$};
+					\draw[orange!90!white, thick] (0.3, 0) arc (0:-30:0.3) node[right=2pt] {$\theta$};
+					\draw[blue!80!white, thick, ->] (0,0) -- (0.85,0.52) node[right=3pt, fill=white] {d};
+					\draw[orange!80!white, thick, ->] (0,0) -- (0.15,0.98) node[above=3.2pt, fill=white] {$G(d)$};
+					\draw[orange!80!white, thick, ->] (0,0) -- (0.85,-0.52) node[below=3pt, fill=white] {$\mathcal{O}_{(b_k)_N,\pm}(d)$};
+					\draw[red, thick, ->] (0,0) -- (1,0) node[right=2pt, fill=white] {b};
+				\end{tikzpicture}
+			\end{center}
 		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Grover's algoritme; V}
+		\begin{itemize}
+			\item Kjøretidsanalyse
+			\begin{align*}
+				G(d) & = \sin(3\theta)g + \cos(3\theta)b \\
+				\implies G^k(d) & = \sin((2k+1)\theta)g + \cos((2k+1)\theta)b
+			\end{align*}
+			\begin{itemize}
+				\begin{onlyenv}<1>
+					\item Maksima når $\sin((2k+1)\theta)=1$
+					\begin{align*}
+						k & = \frac{\pi}{4\theta} - \frac{1}{2} \approx \lfloor\frac{\pi}{4\arcsin(\sfrac{\sqrt{t}}{\sqrt{N}})}\rfloor \\
+						p & = \sin((1+2\lfloor\frac{\pi}{4\arcsin(\sfrac{\sqrt{t}}{\sqrt{N}})}\rfloor)\arcsin(\sfrac{\sqrt{t}}{\sqrt{N}}))
+					\end{align*}
+				\end{onlyenv}
+
+				\begin{onlyenv}<2>
+					\item $\sin(\sfrac{\sqrt{t}}{\sqrt{N}}) \approx \sfrac{\sqrt{t}}{\sqrt{N}}$ når $N \gg 1$.
+					\begin{align*}
+						k & = \lfloor\frac{\pi\sqrt{N}}{4\sqrt{t}}\rfloor \\
+						p & = \sin((1 + 2\lfloor\frac{\pi\sqrt{N}}{4\sqrt{t}}\rfloor)\frac{\sqrt{t}}{\sqrt{N}})
+					\end{align*}
+				\end{onlyenv}
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Amplitudeforsterkningsteknikken}
+		\begin{itemize}
+			\begin{onlyenv}<1-2>
+				\item Sannsynlighetforsterkning
+				\begin{itemize}
+					\item Anta at $A$ er en klassisk Monte Carlo algoritme
+					\item Anta at vi kan sjekke om en løsning er korrekt i polynom tid
+					\item La $\psi_0$ være inputet og $\psi = A(\psi_0)$ være et output
+					\item Anta at $p$ er sannsynligheten for at $\psi$ er et korrekt svar
+					\item Hvordan kan vi forbedre algoritmen og øke sjansen for at $A$ gir oss riktig svar?
+					\begin{onlyenv}<2>
+						\item Vi kjører $A$ flere ganger, si $n$ ganger.
+						\item Hvis $p\ll 1$ så gir $n = \sfrac{1}{p}$ et godt estimat for maksima.
+					\end{onlyenv}	
+				\end{itemize}
+			\end{onlyenv}
+
+			\begin{onlyenv}<3>
+				\item Anta at $A$ er en kvantealgoritme
+				\item La $\psi_0$ være inputet og $\psi = A(\psi_0)$ være et output
+				\item Anta at det finnes et faseorakel $\mathcal{O}_{\pm}$ som sjekker om outputet er korrekt
+				\item Anta at $p$ er sannsynligheten for at $\psi$ er et korrekt svar
+				\item Hvordan kan vi forbedre algoritmen og øke sjansen for at $A$ gir oss riktig svar?
+			\end{onlyenv}
+
+			\begin{onlyenv}<4->
+				\item Algoritme $A$, input $\psi_0$, output $\psi$, faseorakel $\mathcal{O}_{\pm}$ og $p$
+				\item Hvordan kan vi forbedre algoritmen og øke sjansen for at $A$ gir oss riktig svar?
+			\end{onlyenv}
+
+			\begin{onlyenv}<5>
+				\begin{align*}
+					U' = 2|\psi\rangle\langle \psi| - I
+				\end{align*}
+				\begin{center}
+					\begin{quantikz}
+						\lstick{$\psi_0$} & \gate{A} & \gate{O_\pm}\gategroup[wires = 1, steps = 2, style = {rounded corners}]{U} & \gate{U'} & \gate{U} & \qw\ldots & \gate{U} & \qw
+					\end{quantikz}
+				\end{center}
+			\end{onlyenv}
+
+			\begin{onlyenv}<6>
+				% \item Analyse \\
+				\begin{minipage}{0.45\textwidth}
+					\begin{align*}
+						\psi & = \sum_{z:\{0,\ 1\}^n}\zeta_z|z\rangle \\
+						g & = \frac{1}{\sqrt{p}}\sum_{f(z)=1}\zeta_z|z\rangle \\
+						b & = \frac{1}{\sqrt{1-p}}\sum_{f(z)=0}\zeta_z|z\rangle
+					\end{align*}
+				\end{minipage}%
+				\begin{minipage}{0.45\textwidth}
+					\begin{align*}
+						\theta & = \arcsin(\sqrt{p}) \\
+						k & = \lfloor\frac{\pi}{4\arcsin(\sqrt{p})}\rfloor \approx \lfloor\frac{\pi}{4\sqrt{p}}\rfloor \\
+						p' & \approx \sin^2(\frac{\pi}{2}+\sqrt{p})
+					\end{align*}
+				\end{minipage}
+			\end{onlyenv}
+		\end{itemize}
+		
 	\end{frame}
 
 \section{Kvantevandringer}
 
 	\begin{frame}{Kvantevandringer}
-		
+		\begin{itemize}
+			\item Generalisering av Grover's algoritme
+			\item Hva er en graf? $G=(V,E)$; $\mathcal{H} = \mathbb{C}V$
+			\item Lokale operatorer
+			\item Komponenter til andre algoritmer
+			\item Myntede vandringer
+			\begin{itemize}
+				\item Position-coin notation
+				\item Arc notation
+			\end{itemize}
+			\item Umyntede vandringer
+			\item QSS
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Position-coin notation}
+		\begin{itemize}
+			\item $d$-regulær, $d$-kantkromatisk graf
+			\item Fra enhver node, velger vi en farge og følger den
+			\item $\mathcal{H} = \mathbb{C}V \otimes \mathbb{C}^d$
+			
+			\begin{onlyenv}<1>
+				\begin{minipage}{0.35\textwidth}
+					\begin{center}
+						\begin{quantikz}
+							\lstick{$\mathbb{C}V$} & \qw\gategroup[wires = 2, steps = 2, style={rounded corners}]{U} & \gate[2]{S} & \qw \\
+							\lstick{$\mathbb{C}^d$} & \gate{C} & & \qw
+						\end{quantikz}
+					\end{center}
+				\end{minipage}%
+				\begin{minipage}{0.5\textwidth}
+					\begin{center}
+						
+						\item $S$ er flip-flop operatoren
+						\begin{align*}
+							S^2 = I
+						\end{align*}
+						\item $C$ er coin operatoren
+					\end{center}
+				\end{minipage}
+			\end{onlyenv}
+
+
+			\begin{onlyenv}<2>
+				\begin{minipage}{0.35\textwidth}
+					\begin{center}
+						\item S er definert av fargeleggingen
+						\item Vi kan velge C
+						\begin{align*}
+							C = H\otimes H
+						\end{align*}
+					\end{center}
+				\end{minipage}%
+				\begin{minipage}{0.4\textwidth}
+					
+					\begin{center}
+						\begin{tikzpicture}[thick, main/.style = {draw, circle}]
+							\node[main] (1) at (0,0) {0};
+							\node[main] (2) at (1,0) {1};
+							\node[main] (3) at (1.71, 0.71) {2};
+							\node[main] (4) at (1.71, 1.71) {3};
+							\node[main] (5) at (1, 2.42) {4};
+							\node[main] (6) at (0, 2.42) {5};
+							\node[main] (7) at (-0.71, 1.71) {6};
+							\node[main] (8) at (-0.71, 0.71) {7};
+							\graph {
+								(1) --[color=red] (2) --[color=blue!80!white] (3) --[color=red] (4) --[color=blue!80!white] (5) --[color=red] (6) --[color=blue!80!white] (7) --[color=red] (8) --[color=blue!80!white] (1) --[color=green!80!yellow] (4) --[color=magenta] (7) --[color=green!80!yellow] (2) --[color=magenta] (5) --[color=green!80!yellow] (8) --[color=magenta] (3) --[color=green!80!yellow] (6) --[color=magenta] (1);
+								};
+							\end{tikzpicture}
+						\end{center}
+					\end{minipage}
+				\end{onlyenv}
+			\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Arc notation}
+		\begin{itemize}
+			\item Virker på generelle grafer
+			\item Kan tolkes som en vandring på kantene istedenfor nodene
+			\item $\mathcal{H} = \bigoplus_{v:V}\mathbb{C}\{u:V\mid (v,u):E\} \simeq \bigoplus_{v:V}\mathbb{C}^{deg(v)}$
+			\item $\mathcal{H} \subseteq \mathbb{C}V \otimes \mathbb{C}V$
+			
+			\begin{onlyenv}<1-2>
+				\begin{minipage}{0.35\textwidth}
+					\begin{quantikz}
+						\lstick{$\mathbb{C}V$} & \gate[2]{C}\gategroup[wires = 2, steps = 2, style={rounded corners}]{U} & \gate[2]{S} & \qw \\
+						\lstick{$\mathbb{C}V$} & & & \qw
+					\end{quantikz}
+				\end{minipage}%
+				\begin{minipage}{0.45\textwidth}
+					\begin{onlyenv}<1>
+						\begin{center}
+							\item S er flip-flop operatoren
+							\begin{align*}
+								& S^2 = I \\
+								& S(v,u) = u\otimes v
+							\end{align*}
+						\end{center}
+					\end{onlyenv}
+
+					\begin{onlyenv}<2>
+						\begin{center}
+							\item C er coin operatoren
+							\item For enhver $v:V$ har vi en lokal mynt $C_v$ s.a.
+							\begin{align*}
+								C = \bigoplus_{v:V}C_v
+							\end{align*}
+						\end{center}
+					\end{onlyenv}
+				\end{minipage}
+			\end{onlyenv}
+
+			\begin{onlyenv}<3>
+				\item Anta at $V = \{0,\ 1\}$, og at $G$ er den komplette grafen
+				\begin{flushleft}
+					\begin{quantikz}
+						\lstick{$\alpha$} & \gate{X}\gategroup[wires = 2, steps = 4, style = {rounded corners}]{C} & \octrl{1} & \gate{X} & \octrl{1} & \gate[2]{S} & \qw \\
+						\lstick{$\beta$} & \qw & \gate{C_0} & \qw & \gate{C_1} & & \qw 
+					\end{quantikz}
+				\end{flushleft} 
+			\end{onlyenv}
+
+			\begin{onlyenv}<4>
+				\begin{minipage}{0.3\textwidth}
+					\begin{center}
+						\item Velg $C$ som følger:
+						\begin{align*}
+							C_1 & \simeq H \\
+							C_2 & \simeq H \\
+							C_3 & \simeq H\otimes H \\
+							C_4 & \simeq H
+						\end{align*}
+					\end{center}
+				\end{minipage}%
+				\begin{minipage}{0.45\textwidth}
+					\begin{center}
+						\begin{tikzpicture}[main/.style={draw,circle}]
+							% Node plassering
+							\node[main] (1) at (0,0) {1};
+							\node[main] (2) [below right=of 1] {2};
+							\node[main] (3) [above right=of 1] {3};
+							\node[main] (4) [below right=of 3] {4};
+							
+							% Kant definisjon
+							\graph {
+								(3) -- (1) -- (2) -- (3) -- (4);
+								};
+								\draw (4) to [out=180, in=270, looseness=5] (4);
+								\draw (3) to [out=45, in=135, looseness=5] (3);
+							\end{tikzpicture}
+						\end{center}
+				\end{minipage}
+			\end{onlyenv}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Kvantemynter}
+		\begin{itemize}
+			\item Hadamardmynten
+			\begin{onlyenv}<1>
+				\begin{itemize}
+					\item $dim(\mathcal{H}_C)=2^n$
+					\begin{align*}
+						H_M = H^{\otimes n}
+					\end{align*}
+					\item $n = 2$
+					\begin{align*}
+						H_M = \frac{1}{2} \begin{pmatrix*}
+							1 & 1 & 1 & 1 \\
+							1 & -1 & 1 & -1 \\
+							1 & 1 & -1 & -1 \\
+							1 & -1 & -1 & 1
+						\end{pmatrix*}
+					\end{align*}
+				\end{itemize}
+			\end{onlyenv}
+			\item Grovermynten
+			\begin{onlyenv}<2>
+				\begin{center}
+					\begin{itemize}
+						\item $dim(\mathcal{H}_C)=n$
+						\begin{align*}
+							d = \frac{1}{\sqrt{n}}\sum_{i=0}^{n-1}|i\rangle \\
+							G_M = 2dd^* - I
+						\end{align*}
+						\item Anta $n = 4$
+						\begin{align*}
+							G_M = \frac{1}{2} \begin{pmatrix*}
+								-1 & 1 & 1 & 1 \\
+								1 & -1 & 1 & 1 \\
+								1 & 1 & -1 & 1 \\
+								1 & 1 & 1 & -1
+							\end{pmatrix*}
+						\end{align*}
+					\end{itemize}
+				\end{center}
+			\end{onlyenv}
+			\item Fouriermynten
+			\begin{onlyenv}<3>
+				\begin{itemize}
+					\item $dim(\mathcal{H}_C)=n$
+					\begin{align*}
+						F_M = F_n
+					\end{align*}
+					\item La $\omega_{k,l}=e^{\frac{2\pi ikl}{n}}$
+					\begin{align*}
+						F_n = \frac{1}{\sqrt{n}} \begin{pmatrix*}
+							\omega_{k,l}
+						\end{pmatrix*}_{(k,l):\{0,...,n-1\}\times\{0,...,n-1\}}
+					\end{align*}
+				\end{itemize}
+			\end{onlyenv}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Staggered model}
+		\begin{itemize}
+			\item Umyntet kvantevandring
+			\item Bruker graftessellering for å definere $U$
+			\item $\mathcal{H} = \mathbb{C}V$
+			\begin{onlyenv}<1,4>
+				\begin{flushleft}
+					\begin{quantikz}
+						\lstick{$\mathbb{C}V$} & \gate{U} & \qw
+					\end{quantikz}
+				\end{flushleft}
+			\end{onlyenv}
+
+			\begin{onlyenv}<2>
+				\begin{center}
+					\begin{tikzpicture}[main/.style={draw,circle}, scale=1]
+						%Nodene går her
+						\node[main] (1) at (0,1) {1};
+						\node[main] (2) at (0.5, 2.21) {2};
+						\node[main] (3) at (1,1) {3};
+						\node[main] (4) at (2.21, 0.5) {4};
+						\node[main] (5) at (1,0) {5};
+						\node[main] (6) at (0.5,-1.21) {6};
+						\node[main] (7) at (0,0) {7};
+						\node[main] (8) at (-1.21,0.5) {8};
+	
+						%Kantene defineres her
+						\graph {
+							(1) -- (2) -- (3) -- (1) -- (8) -- (7) -- (1) -- (5) -- (4) -- (3) -- (5) -- (6) -- (7) -- (5);
+							(7) -- (3); 
+						};
+					\end{tikzpicture}
+				\end{center}
+			\end{onlyenv}
+			\begin{onlyenv}<3>
+				\begin{center}
+					\begin{tcolorbox}
+						\begin{minipage}{0.35\textwidth}
+							\begin{tikzpicture}[main/.style={draw,circle}, scale=0.75]
+								%Nodene går her
+								\node[main] (1) at (0,1) {};
+								\node[main] (2) at (0.5, 2.21) {};
+								\node[main] (3) at (1,1) {};
+								\node[main, fill=red!80!orange] (4) at (2.21, 0.5) {};
+								\node[main] (5) at (1,0) {};
+								\node[main] (6) at (0.5,-1.21) {};
+								\node[main] (7) at (0,0) {};
+								\node[main, fill=red!80!orange] (8) at (-1.21,0.5) {};
+			
+								%Kantene defineres her
+								\graph {
+									(1) --[color=red!80!orange] (2) --[color=red!80!orange] (3) --[color=red!80!orange] (1);
+									(5) --[color=red!80!orange] (6) --[color=red!80!orange]  (7) --[color=red!80!orange] (5);
+									};
+								
+							\end{tikzpicture}
+							{$\mathcal{T}_1$}
+						\end{minipage}%
+						\begin{minipage}{0.35\textwidth}
+							\begin{tikzpicture}[main/.style={draw,circle}, scale=0.75]
+								%Nodene går her
+								\node[main] (1) at (0,1) {};
+								\node[main, fill=green!80!yellow] (2) at (0.5, 2.21) {};
+								\node[main] (3) at (1,1) {};
+								\node[main] (4) at (2.21, 0.5) {};
+								\node[main] (5) at (1,0) {};
+								\node[main, fill=green!80!yellow] (6) at (0.5,-1.21) {};
+								\node[main] (7) at (0,0) {};
+								\node[main] (8) at (-1.21,0.5) {};
+			
+								%Kantene defineres her
+								\graph {
+									(1) --[color=green!80!yellow] (7) --[color=green!80!yellow] (8) --[color=green!80!yellow] (1);
+									(3) --[color=green!80!yellow] (4) --[color=green!80!yellow] (5) --[color=green!80!yellow] (3);
+									};
+								
+							\end{tikzpicture}
+							{$\mathcal{T}_2$}
+						\end{minipage}%
+						\begin{minipage}{0.35\textwidth}
+							\begin{tikzpicture}[main/.style={draw,circle}, scale=0.75]
+								%Nodene går her
+								\node[main] (1) at (0,1) {};
+								\node[main, fill = blue!80!white] (2) at (0.5, 2.21) {};
+								\node[main] (3) at (1,1) {};
+								\node[main, fill = blue!80!white] (4) at (2.21, 0.5) {};
+								\node[main] (5) at (1,0) {};
+								\node[main, fill = blue!80!white] (6) at (0.5,-1.21) {};
+								\node[main] (7) at (0,0) {};
+								\node[main, fill = blue!80!white] (8) at (-1.21,0.5) {};
+			
+								%Kantene defineres her
+								\graph {
+									(1) --[color=blue!80!white] (3) --[color=blue!80!white] (5) --[color=blue!80!white] (7) --[color=blue!80!white] (1) --[color=blue!80!white] (5);
+									(7) --[color=blue!80!white] (3);
+								};
+								
+							\end{tikzpicture}
+							$\mathcal{T}_3$
+						\end{minipage}
+					\end{tcolorbox}
+				\end{center}
+			\end{onlyenv}
+
+			\begin{onlyenv}<4>
+				\item $U = \circ_{i}H_{\mathcal{T}_i}$
+				\begin{align*}
+					H_{\mathcal{T}_i} & =2\sum_{\alpha:\mathcal{T}_i}\alpha\alpha^* - I
+				\end{align*}
+			\end{onlyenv}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Grensepunktet og quasi-periodisitet}
+		\begin{itemize}
+			\item Hva skjer med kvantevandringen når $\lim_{k\rightarrow\infty}U^k(\psi_0)$?
+			\begin{onlyenv}<2->
+				\item $||U^{k+1}(\psi_0)-U^k(\psi_0)||$ er konstant for alle $k$
+				\item Grensen konverger kun om $\psi_0$ er et fikspunkt for $U$
+			\end{onlyenv}
+			\begin{onlyenv}<3->
+				\item Finnes det en $k$ slik at $U^k\psi_0=\psi_0$?
+			\end{onlyenv}
+			\begin{onlyenv}<4->
+				\item Nei, dette gjelder ikke generelt
+				\item Vi kan derimot finne en $k$ slik at $||U^k\psi_0-\psi_0||<\epsilon$ for en gitt $\epsilon > 0$
+				\begin{align*}
+					U = \begin{pmatrix*}
+						e^{2\pi i\lambda_1} & 0 \\
+						0 & e^{2\pi i\lambda_2}
+					\end{pmatrix*}.
+				\end{align*}
+				\item Tilnærm $\lambda_i \approx \sfrac{a_i}{b_i}$, deretter sett $k=b_1b_2$
+			\end{onlyenv}
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Quantum Spatial Search}
+		\begin{itemize}
+			\item La $G=(V,E)$ og $f : V \rightarrow \{0,\ 1\}$ slik at nøyaktig 1 $v:V$ tilfredstiller $f(v)=1$
+			\item Hvordan kan vi finne $v$? \\
+			\begin{quantikz}
+				\lstick{$\psi_0$} & \gate{O_{f,\pm}}\gategroup[wires = 1, steps = 2, style={rounded corners}]{S} & \gate{U} & \gate{S} & \qw \ldots & \gate{S} & \qw
+			\end{quantikz}
+			\item Kjøretiden $k$ er gitt ved å maksimere følgende funksjon
+			\begin{align*}
+				p(k) = |\langle v|S^k\psi_0\rangle|^2
+			\end{align*}
+			\item Grover er en optimal QSS algoritme
+		\end{itemize}
 	\end{frame}
 
 \section{Implementasjon og tester}
 
-	\begin{frame}{Litt om DSLer}
-		
+	\begin{frame}{Kvantespråk}
+		\begin{itemize}
+			\item Qiskit
+			\item Q\#
+			\item Cirq
+			\item Openql/Quantpy
+			\item Quipper
+			\item Quantum IO Monad
+		\end{itemize}
+	\end{frame}
+
+	\begin{frame}{Position-coin simulering}
+			\begin{onlyenv}<1>
+				\includegraphics[scale=0.5]{Fig7Start0.png}
+			\end{onlyenv}
+			\begin{onlyenv}<2>
+				\includegraphics[scale=0.5]{Fig7Hadamard.png}
+			\end{onlyenv}
+			\begin{onlyenv}<3>
+				\includegraphics[scale=0.5]{Fig7GroverUniformMynt.png}
+			\end{onlyenv}
+	\end{frame}
+
+	\begin{frame}{Arc simulering}
+			\begin{onlyenv}<1>
+				\includegraphics[scale = 0.5]{Fig9Start0.png}
+			\end{onlyenv}
+			\begin{onlyenv}<2>
+				\includegraphics[scale = 0.5]{Fig9Hadamard.png}
+			\end{onlyenv}
+	\end{frame}
+
+	\begin{frame}{Staggered simulering}
+			\begin{onlyenv}<1>
+				\includegraphics[scale = 0.5]{Fig10Start0.png}
+			\end{onlyenv}
+			\begin{onlyenv}<2>
+				\includegraphics[scale = 0.5]{Fig10Hadamard.png}
+			\end{onlyenv}
+	\end{frame}
+
+	\begin{frame}{QSS simulering}
+			\begin{onlyenv}<1>
+				\includegraphics[scale = 0.5]	{Fig10QSS.png}
+			\end{onlyenv}
+			\begin{onlyenv}<2>
+				\includegraphics[scale = 0.5]	{Fig10QSSAmp.png}
+			\end{onlyenv}
 	\end{frame}
 
 \section{Veien videre}
 
-	\begin{frame}{Elektriske nettverk}
-		
+	\begin{frame}{Hvor kan man gå videre?}
+		\begin{itemize}
+			\item Szegedy vandring
+			\item Kontinuerlige Kvantevandringer
+			\item Flyt og elektriske nettverk
+			\item Kriterier for optimalitet av kvantevandringer
+			\item Kvantevandringer over grafer med mer struktur
+			\item Hvordan bruke kvantevandringer til å løse problemer
+		\end{itemize}
 	\end{frame}
 
 \end{document}

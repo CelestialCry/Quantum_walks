@@ -109,7 +109,7 @@
     \begin{align*}
         & \sin((2k'+1)\theta) =1 \\
         \implies & (2k'+1)\theta = \frac{\pi}{2} \\
-        \implies & k \approx \frac{\pi}{4\theta} - \frac{1}{2}=\lfloor\sfrac{\pi}{4\arcsin(\sqrt{\frac{t}{N}})}\rfloor.
+        \implies & k = \frac{\pi}{4\theta} - \frac{1}{2} \approx \lfloor\sfrac{\pi}{4\arcsin(\sqrt{\frac{t}{N}})}\rfloor.
     \end{align*}
 
     Denne verdien av $k$ vil gi sannsynligheten for å treffe et merket element 
@@ -666,7 +666,7 @@
             & \psi_1 \mapsto -\psi_1 \\
             &\psi_k \mapsto \psi_k
         \end{align*}
-        En kvantevandringsbasert QSS operator $S=UR$, denne kaller vi også for den modifiserte kvantestegsoperatoren. En generell QSS operator $S=DR$ trenger å tilfredstille at den initielle tilstanden $s$ overlapper med den merkede noden $\psi_1$, aka $\langle s,\psi_1\rangle\neq 0$. Vi krever også at $s$ er en egenvektor til $D$. I dette rammeverket kan vi se at $D=2uu*-I$, gir Grover's algoritme. Faktisk er Grover's algoritme den optimale QSS algoritmen \cite{Zalka_1999}. Ettersom den kvantevandringsbaserte QSS algoritmen har noe enklere form velger vi å fokusere på den.
+        En kvantevandringsbasert QSS operator $S=UR$, denne kaller vi også for den modifiserte kvantestegsoperatoren. En generell QSS operator $S=DR$ trenger å tilfredstille at den initielle tilstanden $s$ overlapper med den merkede noden $\psi_1$, aka $\langle s,\psi_1\rangle\neq 0$. Vi krever også at $s$ er en egenvektor til $D$. I dette rammeverket kan vi se at $D=2uu^*-I$, gir Grover's algoritme. Faktisk er Grover's algoritme den optimale QSS algoritmen \cite{Zalka_1999}. Ettersom den kvantevandringsbaserte QSS algoritmen har noe enklere form velger vi å fokusere på den.
         
         Et kvantesøk over grafen $G$ vil være en operator på formen $\mathcal{S} = MS^tP$, her er $M$ en måling av tilstanden i basisen til nodene, $t$ er antallet ganger det modifiserte kvantesteget skal kjøre, og $P$ er en operator som sender $\ket{0}$ til den initielle tilstanden. La $s = P(\ket{0})$ være den initielle tilstanden, og $p(t)$ sjansen for å måle $\psi_1$. For å finne ut hvilken $t$ vi burde bruke ønsker vi å maksimere $p(t)$.
         \begin{align*}

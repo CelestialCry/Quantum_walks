@@ -2,7 +2,7 @@
 
     \subsubsection*{Szegedy vandring og andre rammeverk}
     
-        En annen form for kvantevandring som ikke har blitt diskutert i denne rapporten, men som er svært omtalt er Szegedy vandringer \cite{dewolf2021quantum}\cite{Venegas_Andraca_2012}\cite{portugal_2019}. Ideen med Szegedy vandringer er å gjøre om klassiske tilfeldige vandringer basert på Markov kjeder til en kvantevandring. Før Szegedy foreslo sin definisjon for en kvantevandring var det fremdeles uklart hvordan man vandret over generelle grafer. Teknikken han bruker er en transformasjon av transisjonsmatrisen til en Markov kjede. Denne transformasjon går ut på å lage to projeksjonsmatriser, og bruke de til å lage en refleksjon om rommet de projiserer ned på. Deretter finner man kvantevandringsoperatoren som en komposisjon av disse matrisene. 
+        En annen form for kvantevandring som ikke har blitt diskutert i denne rapporten, men som er svært omtalt er Szegedy vandringer \cite{dewolf2021quantum}\cite{Venegas_Andraca_2012}\cite{portugal_2019}. Ideen med Szegedy vandringer er å gjøre om klassiske tilfeldige vandringer basert på Markov kjeder til en kvantevandring. Før Szegedy foreslo sin definisjon for en kvantevandring var det fremdeles uklart hvordan man vandret over generelle grafer. Denne teknikken er en transformasjon av transisjonsmatrisen til en Markov kjede. Transformasjon går ut på å lage to projeksjonsmatriser, og bruke de til å lage en refleksjon om rommet de projiserer ned på. Deretter finner man kvantevandringsoperatoren som en komposisjon av disse matrisene. 
         
         Kvantevandringen som er beskrevet av Szegedy er en kvantevandring som foregår over bipartitte grafer. Metoden kan generelt beskrives over slike grafer, og metoden for å transformere transisjonsmatrisen burde tilsvare en transformasjon av grafen til en bipartitt graf.
         
@@ -27,14 +27,14 @@
         
         Disse kvantevandringene kan man nok bruke til å studere egenskaper ved Cayley grafer og enkelte Johnson grafer. Ved å i tillegg implementere en kvante adder for gruppen man vandrer over, kan man abstrahere vekk de relevante beregningene som kreves å gjøre av gruppen.
     
-    \subsubsection{Kontinuerlig tid kvantevandringer}
+    \subsubsection*{Kontinuerlig tid kvantevandringer}
     
         I denne rapporten har vi kun begrenset oss til diskret tid kvantevandringer. Dette er en bare en liten klasse av kvantevandringer som finnes. Ved å bruke Schrodingers likning kan man definere kontinuerlig tid kvantevandringer. Her er utfordringen å definere den Hamiltonske operatoren som brukes. Venagas-Andraca \cite{Venegas_Andraca_2012} beskriver en type av disse kontinuerlig tid kvantevandringene.
         
         I dag virker det som om denne klassen av kvantevandringer har mer bluss. Noen resultater om denne klassen er at det er vist at de kan gi eksponesiell algoritmisk speed-up, istedenfor kvadratisk. Dette skjer som oftest i spesielle tilfelle av kvantevandringer og om man kan speede-up flere algoritmer er av stor interesse.
         
-        Skillet mellom DTQW (diskrete) og CTQW har lenge vært vanskelig å se. Det er ganske nylig at noen har klart å transformere en CTQW algoritme til en DTQW algoritme og vice versa. Dette er kanskje overraskende at det ikke er en tydelig sammenheng mellom disse klassene av algoritmer.
+        Sammenhengen mellom DTQW (diskrete) og CTQW (kontinuerlige) har lenge vært vanskelig å se. Det er ganske nylig at noen har klart å transformere en CTQW algoritme til en DTQW algoritme og vice versa. Dette er kanskje overraskende at det ikke er en tydelig sammenheng mellom disse klassene av algoritmer.
         
     \subsubsection*{Simulering av kvantesystmer}
     
-        Kvantevandringer har funnet anvendelsen til å simulere arbitrære kvantesystmer. I artikkelen til Venagas-Andreca \cite{Venegas_Andraca_2012} så beskriver de en modell for hvordan kvantevandringer kan brukes til å simulere kvanteberegninger. Disse teknikkene kan nok klare å finne anvendelser til å simulere fysiske og kjemiske kvantesystemer.
+        Kvantevandringer har funnet anvendelsen til å simulere arbitrære kvantesystmer. I artikkelen til Venagas-Andreca \cite{Venegas_Andraca_2012} så beskriver de en modell for hvordan CTQW kan brukes til å simulere kvanteberegninger. Disse teknikkene kan være veldig inflytelsesrike for simuleringer av fysiske og kjemiske systemer.
